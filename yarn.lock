@@ -90,6 +90,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@contentful/rich-text-types@^12.1.2":
+  version "12.1.2"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-12.1.2.tgz#3ac70eb49e7636705e5b962d3c91e2cffbee5e5a"
+  integrity sha512-AFLfDBKEj/6zYg4srg0165d3zyw5iprVjyW/Mll0C8IXT1VPadXIhkcA28N5BKYzOtykuJ2wOYNqvs1zAkNpUQ==
+
 "@iamstarkov/listr-update-renderer@0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@iamstarkov/listr-update-renderer/-/listr-update-renderer-0.4.1.tgz#d7c48092a2dcf90fd672b6c8b458649cb350c77e"
