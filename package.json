@@ -1,0 +1,12 @@
+{
+  "name": "rich-text-to-jsx",
+  "version": "0.1.0",
+  "description": "JSX renderer for the Contentful rich text field type.",
+  "main": "index.js",
+  "repository": "https://github.com/connor-baer/rich-text-to-jsx.git",
+  "author": "(Connor Bär <code@connorbaer.co>)",
+  "license": "MIT",
+  "devDependencies": {
+    "@sumup/foundry": "^1.0.3"
+  }
+}
