@@ -23,9 +23,14 @@ describe('Rich text to JSX', () => {
 
   describe('richTextToJsx', () => {
     it('should parse and render rich text into JSX', () => {
-      const richText = createDocument([paragraph]);
+      const richText = createDocument([paragraph, embeddedEntryBlock]);
       const actual = richTextToJsx(richText);
       expect(actual).toMatchSnapshot();
+    });
+
+    it('should return null if no rich text is passed', () => {
+      const actual = richTextToJsx();
+      expect(actual).toBeNull();
     });
   });
 
@@ -66,6 +71,8 @@ describe('Rich text to JSX', () => {
   });
 
   describe('customNodeToJsx', () => {
+    // FIXME: Figure out how to handle assets.
+    // They don't have a content type, only a mime-type.
     it.skip('should render an embedded asset', () => {
       const overrides = {
         'image/jpg': { [BLOCKS.EMBEDDED_ASSET]: Override }
@@ -77,6 +84,8 @@ describe('Rich text to JSX', () => {
       expect(actual).toMatchSnapshot();
     });
 
+    // FIXME: Figure out how to handle assets.
+    // They don't have a content type, only a mime-type.
     it.skip('should render an asset hyperlink', () => {
       const overrides = {
         route: { [INLINES.ASSET_HYPERLINK]: Override }
@@ -118,6 +127,11 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides
       });
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an unknown element if the content type is undefined', () => {
+      const actual = RichTextService.customNodeToJsx({ data: {} }, options);
       expect(actual).toMatchSnapshot();
     });
   });
@@ -199,14 +213,14 @@ describe('Rich text to JSX', () => {
   });
 
   describe('getOverride', () => {
-    it('should return override by the tag name', () => {
+    it('should return an override by the tag name', () => {
       const type = BLOCKS.PARAGRAPH;
       const overrides = { p: 'foo' };
       const actual = RichTextService.getOverride(type, overrides);
       expect(actual).toBe('foo');
     });
 
-    it('should return override by the node type', () => {
+    it('should return an override by the node type', () => {
       const type = BLOCKS.PARAGRAPH;
       const overrides = { [BLOCKS.PARAGRAPH]: 'foo' };
       const actual = RichTextService.getOverride(type, overrides);

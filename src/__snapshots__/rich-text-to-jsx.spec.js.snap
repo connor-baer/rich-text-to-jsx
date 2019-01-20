@@ -31,6 +31,8 @@ exports[`Rich text to JSX customNodeToJsx should render an entry hyperlink 1`] =
 </Override>
 `;
 
+exports[`Rich text to JSX customNodeToJsx should render an unknown element if the content type is undefined 1`] = `<UnknownElement />`;
+
 exports[`Rich text to JSX parentNodeToJsx should render a node and its children 1`] = `
 <ul>
   <li>
@@ -114,6 +116,13 @@ Array [
       This is a hyperlink.
     </a>
   </p>,
+  <BlockElement
+    contentType="page"
+    id="32v7TZ7YQEaugOeew4SymY"
+    slug="about"
+    title="Title: About Acme Corp"
+    updatedAt="2019-01-18T14:37:30.221Z"
+  />,
 ]
 `;
 
