@@ -32,7 +32,17 @@ describe('get', () => {
     expect(actual).toBe(obj);
   });
 
-  it('should return the default value the path does not exist', () => {
+  it('should return undefined if no object is passed', () => {
+    const actual = get();
+    expect(actual).toBeUndefined();
+  });
+
+  it('should return undefined if the path does not exist', () => {
+    const actual = get(obj, 'fizz.buzz');
+    expect(actual).toBeUndefined();
+  });
+
+  it('should return the default value if the path does not exist', () => {
     const actual = get(obj, 'fizz.buzz', 'default');
     expect(actual).toBe('default');
   });

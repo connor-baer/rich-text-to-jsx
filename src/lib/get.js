@@ -1,5 +1,5 @@
 export default function get(obj, path, defaultValue) {
-  if (!path) {
+  if (!obj || !path) {
     return obj;
   }
   // Get the path as an array
@@ -10,23 +10,18 @@ export default function get(obj, path, defaultValue) {
 
   // For each item in the path, dig into the object
   for (let i = 0; i < segments.length; i += 1) {
-    // If the item isn't found, return the default (or null)
+    // If the item isn't found, return the default (or undefined)
     if (!current[segments[i]]) {
       return defaultValue;
     }
 
-    // Otherwise, update the current  value
+    // Otherwise, update the current value
     current = current[segments[i]];
   }
 
   return current;
 }
 
-/**
- * If the path is a string, convert it to an array
- * @param  {String} path The path
- * @return {Array}       The path array
- */
 function stringToSegments(path) {
   // Split to an array from dot notation
   return path.split('.').reduce((allSegments, item) => {
