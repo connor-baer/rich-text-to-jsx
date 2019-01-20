@@ -2,25 +2,79 @@
 
 exports[`RichText styles should render with default styles 1`] = `
 Array [
+  <h1>
+    This is a first-level heading
+  </h1>,
   <p>
-    Simple rich text supports 
+    This is normal text.
     <strong>
-      bold
+      This is bold text.
     </strong>
-     & 
     <em>
-      italic
+      This is italic text.
     </em>
-     text, 
-    <a
-      href="https://sumup.com"
-    >
-      links
-    </a>
-    , and line breaks.
+    <u>
+      This is underlined text.
+    </u>
   </p>,
-  <p>
-    It does not support headers, images, tables, and other block-level elements.
-  </p>,
+  <ul>
+    <li>
+      <p>
+        This is normal text.
+        <strong>
+          This is bold text.
+        </strong>
+        <em>
+          This is italic text.
+        </em>
+        <u>
+          This is underlined text.
+        </u>
+      </p>
+    </li>
+    <li>
+      <p>
+        This is normal text.
+        <strong>
+          This is bold text.
+        </strong>
+        <em>
+          This is italic text.
+        </em>
+        <u>
+          This is underlined text.
+        </u>
+      </p>
+    </li>
+    <li>
+      <p>
+        This is normal text.
+        <strong>
+          This is bold text.
+        </strong>
+        <em>
+          This is italic text.
+        </em>
+        <u>
+          This is underlined text.
+        </u>
+      </p>
+    </li>
+  </ul>,
+  <hr />,
+  <blockquote>
+    <p>
+      This is normal text.
+      <strong>
+        This is bold text.
+      </strong>
+      <em>
+        This is italic text.
+      </em>
+      <u>
+        This is underlined text.
+      </u>
+    </p>
+  </blockquote>,
 ]
 `;

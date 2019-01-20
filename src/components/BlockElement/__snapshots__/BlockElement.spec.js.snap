@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockElement in development should render a warning 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "red",
+      "color": "white",
+    }
+  }
+>
+  Unknown block node type "undefined" Check the console for more info.
+</div>
+`;
+
+exports[`BlockElement in development should render a warning and the children 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "red",
+      "color": "white",
+    }
+  }
+>
+  Unknown block node type "undefined" Check the console for more info.
+  <p>
+    Foo
+  </p>
+</div>
+`;
+
+exports[`BlockElement in production should render null 1`] = `null`;
+
+exports[`BlockElement in production should render the children 1`] = `
+<p>
+  Bar
+</p>
+`;

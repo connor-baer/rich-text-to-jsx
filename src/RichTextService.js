@@ -6,17 +6,21 @@ import cx from './lib/cx';
 import get from './lib/get';
 import isEmpty from './lib/is-empty';
 
+import UnknownElement from './components/UnknownElement';
+import BlockElement from './components/BlockElement';
+import InlineElement from './components/InlineElement';
+
 const defaultOptions = {
   blocks: {},
   inlines: {},
   createElement: React.createElement
 };
 
-const blockElements = {
+const blockCustomNodes = {
   [BLOCKS.EMBEDDED_ENTRY]: true
 };
 
-const inlineElements = {
+const inlineCustomNodes = {
   [INLINES.ASSET_HYPERLINK]: true,
   [INLINES.ENTRY_HYPERLINK]: true,
   [INLINES.EMBEDDED_ENTRY]: true
@@ -68,88 +72,115 @@ function getProps(type, overrides, data = {}) {
   return {
     ...overrideProps,
     ...data,
-    className: cx(data.className, overrideProps.className) || undefined
+    type,
+    className: cx(data.className, overrideProps.className)
   };
 }
 
-function DefaultBlock(props) {
-  if (process.env.NODE_ENV !== 'production') {
-    console.debug(props);
-    return (
-      <div style={{ color: 'white', backgroundColor: 'red' }}>
-        No custom component defined.
-      </div>
-    );
-  }
-  return null;
+function getFields(data) {
+  return get(data, 'target.fields');
 }
 
-function DefaultInline(props) {
-  if (process.env.NODE_ENV !== 'production') {
-    console.debug(props);
-    return (
-      <span style={{ color: 'white', backgroundColor: 'red' }}>
-        No custom component defined.
-      </span>
-    );
-  }
-  return null;
+function getSys(data) {
+  return get(data, 'target.sys');
+}
+function getContentType(data) {
+  const sys = getSys(data);
+  return get(sys, 'contentType.sys.id');
 }
 
 export default function richTextToJsx(doc, options = {}) {
+  if (!doc) {
+    return null;
+  }
   return nodeListToJsx(doc.content, { ...defaultOptions, ...options });
 }
 
-function nodeListToJsx(nodes, options) {
+export function nodeListToJsx(nodes, options) {
+  if (isEmpty(nodes)) {
+    return null;
+  }
   return nodes.map((node, key) => nodeToJsx(node, options, key));
 }
 
-function nodeToJsx(node = {}, options, key) {
-  const { nodeType, data = {}, value, content, marks } = node;
-  const { createElement, blocks, inlines } = options;
+export function nodeToJsx(node = {}, options = {}, key) {
+  const { nodeType } = node;
 
   if (!nodeType) {
-    // TODO: Figure out what to return when passed an unrecognized node type.
-    return '';
+    return unknownNodeToJsx(node, options, key);
   }
 
-  const isTextElement = nodeType === 'text';
+  const isTextNode = nodeType === 'text';
 
-  if (isTextElement) {
-    if (isEmpty(marks)) {
-      return value;
+  if (isTextNode) {
+    return textNodeToJsx(node, options, key);
+  }
+
+  const isCustomBlockNode = blockCustomNodes[nodeType];
+  const isCustomInlineNode = inlineCustomNodes[nodeType];
+  const isCustomNode = isCustomBlockNode || isCustomInlineNode;
+
+  if (isCustomNode) {
+    return customNodeToJsx(node, options, key, isCustomBlockNode);
+  }
+
+  return parentNodeToJsx(node, options, key);
+}
+
+export function unknownNodeToJsx(node, options, key) {
+  const { data, content } = node;
+  const { blocks, inlines, createElement } = options;
+  const fields = getFields(data);
+  const sys = getSys(data);
+  const contentType = getContentType(data);
+  const props = getProps(
+    contentType,
+    { ...blocks, ...inlines },
+    { ...fields, sys, key }
+  );
+  return createElement(UnknownElement, props, content);
+}
+
+export function textNodeToJsx(node, options, key) {
+  const { data = {}, value, marks } = node;
+  const { createElement, inlines } = options;
+
+  if (isEmpty(marks)) {
+    return value;
+  }
+
+  return marks.reduce((children, mark, markKey) => {
+    const tag = getTag(mark.type, inlines);
+
+    if (!tag) {
+      return children;
     }
 
-    return marks.reduce((children, mark, markKey) => {
-      const tag = getTag(mark.type, inlines);
+    const props = getProps(mark.type, inlines, {
+      ...data,
+      key: `${key}${markKey}`
+    });
+    return createElement(tag, props, children);
+  }, value);
+}
 
-      if (!tag) {
-        return children;
-      }
+export function customNodeToJsx(node, options, key, isBlockNode) {
+  const { data, content } = node;
+  const { blocks, inlines, createElement } = options;
+  const fields = getFields(data);
+  const sys = getSys(data);
+  const contentType = getContentType(data);
+  const overrides = isBlockNode ? blocks : inlines;
+  const DefaultElement = isBlockNode ? BlockElement : InlineElement;
+  const tag = getTag(contentType, overrides) || DefaultElement;
+  const props = getProps(contentType, blocks, { ...fields, sys, key });
+  return createElement(tag, props, nodeListToJsx(content, options));
+}
 
-      const props = getProps(mark.type, inlines, {
-        ...data,
-        key: `${key}${markKey}`
-      });
-      return createElement(tag, props, children);
-    }, value);
-  }
-
-  const isBlockElement = blockElements[nodeType];
-  const isInlineElement = inlineElements[nodeType];
-  const isCustomElement = isBlockElement || isInlineElement;
-
-  if (isCustomElement) {
-    const { fields, sys } = data.target;
-    const contentType = get(sys, 'contentType.sys.id');
-    const overrides = isBlockElement ? blocks : inlines;
-    const DefaultElement = isBlockElement ? DefaultBlock : DefaultInline;
-    const tag = getTag(contentType, overrides) || DefaultElement;
-    const props = getProps(contentType, blocks, { ...fields, sys, key });
-    return createElement(tag, props, content);
-  }
-
-  const tag = getTag(nodeType, blocks) || DefaultBlock;
+export function parentNodeToJsx(node, options, key) {
+  const { data, content, nodeType } = node;
+  const { blocks, createElement } = options;
+  const tag = getTag(nodeType, blocks) || BlockElement;
   const { uri: href, ...rest } = data;
   const props = getProps(nodeType, blocks, { ...rest, href });
   return createElement(tag, { ...props, key }, nodeListToJsx(content, options));
