@@ -73,9 +73,38 @@ export const underline = {
   nodeType: 'text'
 };
 
+export const hyperlink = {
+  data: {
+    uri: 'https://acme.com'
+  },
+  content: [
+    {
+      data: {},
+      marks: [],
+      value: 'This is a hyperlink.',
+      nodeType: 'text'
+    }
+  ],
+  nodeType: 'hyperlink'
+};
+
+export const boldAndItalic = {
+  data: {},
+  marks: [
+    {
+      type: 'bold'
+    },
+    {
+      type: 'italic'
+    }
+  ],
+  value: 'This is bold and italic text.',
+  nodeType: 'text'
+};
+
 export const paragraph = {
   data: {},
-  content: [text, bold, italic, underline],
+  content: [text, bold, italic, underline, hyperlink],
   nodeType: 'paragraph'
 };
 
@@ -103,26 +132,73 @@ export const hr = {
   nodeType: 'hr'
 };
 
+const asset = {
+  id: '4fgGUXCJXWOQUAEQqCS8MW',
+  updatedAt: '2019-01-14T04:57:27.049Z',
+  title: 'Random photo from Unsplash.com',
+  file: {
+    url: 'https://source.unsplash.com/random/800x500',
+    details: {
+      size: 240963,
+      image: {
+        width: 800,
+        height: 500
+      }
+    },
+    fileName: 'random-unsplash.jpg',
+    contentType: 'image/jpg'
+  }
+};
+
+const entry = {
+  id: '32v7TZ7YQEaugOeew4SymY',
+  contentType: 'page',
+  updatedAt: '2019-01-18T14:37:30.221Z',
+  slug: 'about',
+  image: asset,
+  title: 'Title: About Acme Corp'
+};
+
 export const embeddedAsset = {
   data: {
-    target: {
-      id: '4fgGUXCJXWOQUAEQqCS8MW',
-      updatedAt: '2019-01-14T04:57:27.049Z',
-      title: 'Random photo from Unsplash.com',
-      file: {
-        url: 'https://source.unsplash.com/random/800x500',
-        details: {
-          size: 240963,
-          image: {
-            width: 800,
-            height: 500
-          }
-        },
-        fileName: 'random-unsplash.jpg',
-        contentType: 'image/jpg'
-      }
-    }
+    target: asset
   },
   content: [],
   nodeType: 'embedded-asset-block'
+};
+
+export const entryHyperlink = {
+  data: {
+    target: {
+      id: '32v7TZ7YQEaugOeew4SymY',
+      contentType: 'route',
+      updatedAt: '2019-01-18T14:37:30.221Z',
+      slug: 'about'
+    }
+  },
+  content: [
+    {
+      data: {},
+      marks: [],
+      value: 'This is a link to an entry.',
+      nodeType: 'text'
+    }
+  ],
+  nodeType: 'entry-hyperlink'
+};
+
+export const embeddedEntryInline = {
+  data: {
+    target: entry
+  },
+  content: [],
+  nodeType: 'embedded-entry-inline'
+};
+
+export const embeddedEntryBlock = {
+  data: {
+    target: entry
+  },
+  content: [],
+  nodeType: 'embedded-entry-block'
 };

@@ -13,11 +13,11 @@ JSX renderer for the Contentful rich text field type
 - [Installation](#installation)
 - [Usage](#usage)
   - [Parsing Options](#parsing-options)
-    - [options.inlines - Override Any HTML Tag's Representation](#optionsinlines---override-any-html-tags-representation)
+    - [options.overrides - Override any node's representation](#optionsoverrides---override-any-nodes-representation)
     - [options.createElement - Custom React.createElement behavior](#optionscreateelement---custom-reactcreateelement-behavior)
   - [Getting the smallest possible bundle size](#getting-the-smallest-possible-bundle-size)
   - [Usage with Preact](#usage-with-preact)
-- [Using The Compiler Directly](#using-the-compiler-directly)
+  - [Using the compiler directly](#using-the-compiler-directly)
 - [Changelog](#changelog)
 
 <!-- /TOC -->
@@ -53,7 +53,7 @@ ES6-style usage\*:
 ```jsx
 import React from 'react';
 import { render } from 'react-dom';
-import { RichText } from '@madebyconnor/rich-text-to-jsx';
+import RichText from '@madebyconnor/rich-text-to-jsx';
 
 const richText = {
   data: {},
@@ -85,16 +85,16 @@ render(<RichText richText={richText} />, document.body);
 
 ### Parsing Options
 
-_TODO: Explain difference between blocks and inlines._
+_TODO: Explain difference between built-in and custom elements._
 
-#### options.inlines - Override Any HTML Tag's Representation
+#### options.overrides - Override any node's representation
 
-Pass the `options.inlines` prop to the compiler or a `<React>` component to seamlessly revise the rendered representation of any HTML tag. You can choose to change the component itself, add/change props, or both.
+Pass the `options.overrides` prop to the compiler or the `<RichText>` component to seamlessly revise the rendered representation of any node type. You can choose to change the component itself, add/change props, or both.
 
 ```jsx
 import React from 'react';
 import { render } from 'react-dom';
-import { RichText } from '@madebyconnor/rich-text-to-jsx';
+import RichText from '@madebyconnor/rich-text-to-jsx';
 import { BLOCKS } from '@contentful/rich-text-types';
 
 // Surprise, it's a div instead!
@@ -102,18 +102,10 @@ const MyParagraph = ({ children, ...props }) => (
   <div {...props}>{children}</div>
 );
 
-[BLOCKS.PARAGRAPH]: {
-      component: Text,
-      props: {
-        noMargin: true,
-        size
-      }
-    },
-
 render(
   <RichText
     richText={{ ... }}
-    blocks={{
+    overrides={{
       [BLOCKS.PARAGRAPH]: {
         component: MyParagraph,
         props: {
@@ -137,14 +129,28 @@ render(
 If you only wish to provide a component override, a simplified syntax is available:
 
 ```js
-{
-  blocks: {
-    [BLOCKS.PARAGRAPH]: MyParagraph
-  }
-}
+const overrides = {
+  [BLOCKS.PARAGRAPH]: MyParagraph
+};
 ```
 
-Any conflicts between passed `props` and the specific properties above will be resolved in favor of `@madebyconnor/rich-text-to-jsx`'s code. `classNames` are merged automatically.
+Any conflicts between passed `props` and the specific properties above will be resolved in favor of `@madebyconnor/rich-text-to-jsx`'s code. `classNames` are merged automatically. The `uri` prop on `INLINES.HYPERLINK` nodes is renamed to `href` for convenience.
+
+For **custom elements** (entries and assets), you need to specify the component for each possible node type. This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink.
+
+Custom elements are passed `node.data.target`.
+
+For example, let's say you have an entry of the content type `page`.
+
+```js
+const PageHyperlink = ({}) => {};
+
+const overrides = {
+  contentType: {
+    [INLINES.ASSET_HYPERLINK]: MyParagraph
+  }
+};
+```
 
 #### options.createElement - Custom React.createElement behavior
 
@@ -153,7 +159,7 @@ Sometimes, you might want to override the `React.createElement` default behavior
 ```jsx
 import React from 'react';
 import { render } from 'react-dom';
-import { RichText } from '@madebyconnor/rich-text-to-jsx';
+import RichText from '@madebyconnor/rich-text-to-jsx';
 
 render(
   <RichText
@@ -166,6 +172,14 @@ render(
   />,
   document.body
 );
+
+/*
+    renders:
+
+    <div className="parent">
+        <p>Hello world!</p>
+    </div>
+ */
 ```
 
 ### Getting the smallest possible bundle size
@@ -183,9 +197,9 @@ Here are instructions for some of the popular bundlers:
 
 Everything will work just fine! Simply [Alias `react` to `preact-compat`](https://github.com/developit/preact-compat#usage-with-webpack) like you probably already are doing.
 
-## Using The Compiler Directly
+### Using the compiler directly
 
-If desired, the compiler function is a "named" export on the `@madebyconnor/rich-text-to-jsx` module:
+If desired, the compiler function is a named export on the `@madebyconnor/rich-text-to-jsx` module:
 
 ```jsx
 import React from 'react';
@@ -194,7 +208,7 @@ import { richTextToJsx } from '@madebyconnor/rich-text-to-jsx';
 
 const richText = {{ ... }}
 
-render(richTextToJsx(richText, document.body);
+richTextToJsx(richText);
 ```
 
 It accepts the following arguments:
@@ -205,4 +219,4 @@ richTextToJsx(richText: string, options: object?)
 
 ## Changelog
 
-See [Github Releases](https://github.com/connor-baer/rich-text-to-jsx/releases).
+See [GitHub Releases](https://github.com/connor-baer/rich-text-to-jsx/releases).

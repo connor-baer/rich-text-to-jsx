@@ -10,7 +10,7 @@ import UnknownElement from './components/UnknownElement';
 import BlockElement from './components/BlockElement';
 import InlineElement from './components/InlineElement';
 
-const defaultOptions = {
+export const defaultOptions = {
   blocks: {},
   inlines: {},
   createElement: React.createElement
@@ -27,13 +27,13 @@ const inlineCustomNodes = {
 };
 
 const tagMap = {
-  [BLOCKS.PARAGRAPH]: 'p',
   [BLOCKS.HEADING_1]: 'h1',
   [BLOCKS.HEADING_2]: 'h2',
   [BLOCKS.HEADING_3]: 'h3',
   [BLOCKS.HEADING_4]: 'h4',
   [BLOCKS.HEADING_5]: 'h5',
   [BLOCKS.HEADING_6]: 'h6',
+  [BLOCKS.PARAGRAPH]: 'p',
   [BLOCKS.UL_LIST]: 'ul',
   [BLOCKS.OL_LIST]: 'ol',
   [BLOCKS.LIST_ITEM]: 'li',
@@ -51,7 +51,7 @@ function getOverride(type, overrides) {
   return overrides[tag] || overrides[type];
 }
 
-function getTag(type, overrides) {
+function getElement(type, overrides) {
   const override = getOverride(type, overrides);
 
   if (override) {
@@ -85,8 +85,7 @@ function getSys(data) {
   return get(data, 'target.sys');
 }
 function getContentType(data) {
-  const sys = getSys(data);
-  return get(sys, 'contentType.sys.id');
+  return get(data, 'target.contentType');
 }
 
 export default function richTextToJsx(doc, options = {}) {
@@ -150,7 +149,7 @@ export function textNodeToJsx(node, options, key) {
   }
 
   return marks.reduce((children, mark, markKey) => {
-    const tag = getTag(mark.type, inlines);
+    const tag = getElement(mark.type, inlines);
 
     if (!tag) {
       return children;
@@ -167,21 +166,32 @@ export function textNodeToJsx(node, options, key) {
 export function customNodeToJsx(node, options, key, isBlockNode) {
   const { data, content } = node;
   const { blocks, inlines, createElement } = options;
-  const fields = getFields(data);
-  const sys = getSys(data);
+
   const contentType = getContentType(data);
+
   const overrides = isBlockNode ? blocks : inlines;
   const DefaultElement = isBlockNode ? BlockElement : InlineElement;
-  const tag = getTag(contentType, overrides) || DefaultElement;
-  const props = getProps(contentType, blocks, { ...fields, sys, key });
-  return createElement(tag, props, nodeListToJsx(content, options));
+  const tag = getElement(contentType, overrides) || DefaultElement;
+  const props = getProps(contentType, blocks, { ...data.target, key });
+
+  const children = isEmpty(content)
+    ? undefined
+    : nodeListToJsx(content, options);
+
+  return createElement(tag, props, children);
 }
 
 export function parentNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { blocks, createElement } = options;
-  const tag = getTag(nodeType, blocks) || BlockElement;
+
+  const tag = getElement(nodeType, blocks) || BlockElement;
   const { uri: href, ...rest } = data;
   const props = getProps(nodeType, blocks, { ...rest, href });
-  return createElement(tag, { ...props, key }, nodeListToJsx(content, options));
+
+  const children = isEmpty(content)
+    ? undefined
+    : nodeListToJsx(content, options);
+
+  return createElement(tag, { ...props, key }, children);
 }

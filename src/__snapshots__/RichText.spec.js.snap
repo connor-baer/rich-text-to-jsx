@@ -16,6 +16,11 @@ Array [
     <u>
       This is underlined text.
     </u>
+    <a
+      href="https://example.com"
+    >
+      This is a hyperlink.
+    </a>
   </p>,
   <ul>
     <li>
@@ -30,6 +35,11 @@ Array [
         <u>
           This is underlined text.
         </u>
+        <a
+          href="https://example.com"
+        >
+          This is a hyperlink.
+        </a>
       </p>
     </li>
     <li>
@@ -44,6 +54,11 @@ Array [
         <u>
           This is underlined text.
         </u>
+        <a
+          href="https://example.com"
+        >
+          This is a hyperlink.
+        </a>
       </p>
     </li>
     <li>
@@ -58,6 +73,11 @@ Array [
         <u>
           This is underlined text.
         </u>
+        <a
+          href="https://example.com"
+        >
+          This is a hyperlink.
+        </a>
       </p>
     </li>
   </ul>,
@@ -74,6 +94,11 @@ Array [
       <u>
         This is underlined text.
       </u>
+      <a
+        href="https://example.com"
+      >
+        This is a hyperlink.
+      </a>
     </p>
   </blockquote>,
 ]
