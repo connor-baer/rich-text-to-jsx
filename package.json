@@ -4,6 +4,7 @@
   "description": "JSX renderer for the Contentful rich text field type.",
   "sideEffects": false,
   "main": "dist/index.cjs.js",
+  "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.js",
   "files": [
@@ -17,7 +18,19 @@
     "build": "rollup --config",
     "prepublishOnly": "yarn build",
     "lint": "foundry run eslint --fix --quiet src/**/*.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "size": "size-limit"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.cjs.js",
+      "limit": "3.7 kB"
+    }
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-html"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -34,7 +47,8 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-filesize": "^6.0.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0"
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "size-limit": "^0.21.1"
   },
   "peerDependencies": {
     "prop-types": "^15.6.2",
