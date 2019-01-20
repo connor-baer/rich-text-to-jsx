@@ -1,6 +1,11 @@
+import isEmpty from './is-empty';
+
 export default function cx(...args) {
-  return Array.prototype.slice
-    .call(args)
-    .filter(Boolean)
-    .join(' ');
+  const truthyClassNames = Array.prototype.slice.call(args).filter(Boolean);
+
+  if (isEmpty(truthyClassNames)) {
+    return undefined;
+  }
+
+  return truthyClassNames.join(' ');
 }
