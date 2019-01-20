@@ -35,11 +35,7 @@ const config = {
     peerDepsExternal(),
     babel({ exclude: 'node_modules/**' }),
     resolve(),
-    commonjs({
-      namedExports: {
-        'node_modules/lodash/lodash.js': ['get', 'isEmpty']
-      }
-    }),
+    commonjs(),
     filesize()
   ]
 };

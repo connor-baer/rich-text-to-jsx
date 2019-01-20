@@ -35,7 +35,6 @@
     "react-dom": "^16.7.0"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^12.1.2",
-    "lodash": "^4.17.11"
+    "@contentful/rich-text-types": "^12.1.2"
   }
 }

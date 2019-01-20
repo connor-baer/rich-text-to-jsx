@@ -1,12 +1,14 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
-import { get, isEmpty } from 'lodash';
+import { createElement } from 'react';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
+
+import get from './utils/get';
+import isEmpty from './utils/is-empty';
 
 const defaultOptions = {
   blocks: {},
   inlines: {},
-  createElement: React.createElement
+  createElement
 };
 
 const blockElements = {

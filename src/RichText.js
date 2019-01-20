@@ -4,10 +4,7 @@ import richTextToJsx from './RichTextService';
 /**
  * Describe RichText here.
  */
-const RichText = ({ children, ...options }) => {
-  const jsx = richTextToJsx(children, options);
-  return jsx;
-};
+const RichText = ({ children, ...options }) => richTextToJsx(children, options);
 
 RichText.propTypes = {
   /**

@@ -1,3 +1,4 @@
 import RichText from './RichText';
+import richTextToJsx from './RichTextService';
 
-export default RichText;
+export { RichText, richTextToJsx };
