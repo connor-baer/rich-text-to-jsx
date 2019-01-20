@@ -26,7 +26,7 @@
   "size-limit": [
     {
       "path": "dist/index.cjs.js",
-      "limit": "3.6 kB"
+      "limit": "4 kB"
     }
   ],
   "jest": {
@@ -58,7 +58,7 @@
     "size-limit": "^0.21.1"
   },
   "peerDependencies": {
-    "react": ">= 0.14.0"
+    "react": ">= 16.0.0"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^12.1.2"

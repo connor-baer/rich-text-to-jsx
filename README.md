@@ -31,7 +31,7 @@ JSX renderer for the Contentful rich text field type
 
 All this clocks in at around 4 kB gzipped.
 
-Requires React >= 0.14.
+Requires React >= 16.0.0.
 
 ## Installation
 
