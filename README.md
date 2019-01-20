@@ -1,25 +1,24 @@
 <div align="center">
 
-# rich-text-to-jsx
+# rich-text-to-jsx <!-- omit in TOC -->
 
-JSX renderer for the Contentful rich text field type.
+JSX renderer for the Contentful rich text field type
 
-[![npm version](https://badge.fury.io/js/@madebyconnor/rich-text-to-jsx.svg)](https://badge.fury.io/js/@madebyconnor/rich-text-to-jsx) [![Build Status](https://travis-ci.org/connor-baer/rich-text-to-jsx.svg?branch=master)](https://travis-ci.org/connor-baer/rich-text-to-jsx) [![codecov](https://codecov.io/gh/connor-baer/rich-text-to-jsx/branch/master/graph/badge.svg)](https://codecov.io/gh/connor-baer/rich-text-to-jsx)
+[![npm version](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx.svg)](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx) [![Build Status](https://travis-ci.org/connor-baer/rich-text-to-jsx.svg?branch=master)](https://travis-ci.org/connor-baer/rich-text-to-jsx) [![codecov](https://codecov.io/gh/connor-baer/rich-text-to-jsx/branch/master/graph/badge.svg)](https://codecov.io/gh/connor-baer/rich-text-to-jsx)
 
 </div>
 
 <!-- TOC -->
 
-- [rich-text-to-jsx](#rich-text-to-jsx)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Parsing Options](#parsing-options)
-      - [options.inlines - Override Any HTML Tag's Representation](#optionsinlines---override-any-html-tags-representation)
-      - [options.createElement - Custom React.createElement behavior](#optionscreateelement---custom-reactcreateelement-behavior)
-    - [Getting the smallest possible bundle size](#getting-the-smallest-possible-bundle-size)
-    - [Usage with Preact](#usage-with-preact)
-  - [Using The Compiler Directly](#using-the-compiler-directly)
-  - [Changelog](#changelog)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Parsing Options](#parsing-options)
+    - [options.inlines - Override Any HTML Tag's Representation](#optionsinlines---override-any-html-tags-representation)
+    - [options.createElement - Custom React.createElement behavior](#optionscreateelement---custom-reactcreateelement-behavior)
+  - [Getting the smallest possible bundle size](#getting-the-smallest-possible-bundle-size)
+  - [Usage with Preact](#usage-with-preact)
+- [Using The Compiler Directly](#using-the-compiler-directly)
+- [Changelog](#changelog)
 
 <!-- /TOC -->
 
