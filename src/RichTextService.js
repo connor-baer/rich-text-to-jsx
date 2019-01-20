@@ -73,21 +73,27 @@ function getProps(type, overrides, data = {}) {
 }
 
 function DefaultBlock(props) {
-  console.log(props);
-  return (
-    <div style={{ color: 'white', backgroundColor: 'red' }}>
-      No custom component defined.
-    </div>
-  );
+  if (process.env.NODE_ENV !== 'production') {
+    console.debug(props);
+    return (
+      <div style={{ color: 'white', backgroundColor: 'red' }}>
+        No custom component defined.
+      </div>
+    );
+  }
+  return null;
 }
 
 function DefaultInline(props) {
-  console.log(props);
-  return (
-    <span style={{ color: 'white', backgroundColor: 'red' }}>
-      No custom component defined.
-    </span>
-  );
+  if (process.env.NODE_ENV !== 'production') {
+    console.debug(props);
+    return (
+      <span style={{ color: 'white', backgroundColor: 'red' }}>
+        No custom component defined.
+      </span>
+    );
+  }
+  return null;
 }
 
 export default function richTextToJsx(doc, options = {}) {

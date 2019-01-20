@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RichText styles should render with default styles 1`] = `
+Array [
+  <p>
+    Simple rich text supports 
+    <strong>
+      bold
+    </strong>
+     & 
+    <em>
+      italic
+    </em>
+     text, 
+    <a
+      href="https://sumup.com"
+    >
+      links
+    </a>
+    , and line breaks.
+  </p>,
+  <p>
+    It does not support headers, images, tables, and other block-level elements.
+  </p>,
+]
+`;
