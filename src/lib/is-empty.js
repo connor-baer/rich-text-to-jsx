@@ -1,4 +1,7 @@
 export default function isEmpty(obj) {
+  if (!obj) {
+    return true;
+  }
   // because Object.keys(new Date()).length === 0;
   // we have to do an additional check.
   const isObject = obj.constructor === Object;

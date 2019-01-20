@@ -1,14 +1,15 @@
 /* eslint-disable no-use-before-define */
-import { createElement } from 'react';
+import React from 'react';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
-import get from './utils/get';
-import isEmpty from './utils/is-empty';
+import cx from './lib/cx';
+import get from './lib/get';
+import isEmpty from './lib/is-empty';
 
 const defaultOptions = {
   blocks: {},
   inlines: {},
-  createElement
+  createElement: React.createElement
 };
 
 const blockElements = {
@@ -69,13 +70,6 @@ function getProps(type, overrides, data = {}) {
     ...data,
     className: cx(data.className, overrideProps.className) || undefined
   };
-}
-
-function cx(...args) {
-  return Array.prototype.slice
-    .call(args)
-    .filter(Boolean)
-    .join(' ');
 }
 
 function DefaultBlock(props) {

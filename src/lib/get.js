@@ -1,4 +1,7 @@
-export default function get(obj, path, def) {
+export default function get(obj, path, defaultValue) {
+  if (!path) {
+    return obj;
+  }
   // Get the path as an array
   const segments = typeof path !== 'string' ? path : stringToSegments(path);
 
@@ -9,7 +12,7 @@ export default function get(obj, path, def) {
   for (let i = 0; i < segments.length; i += 1) {
     // If the item isn't found, return the default (or null)
     if (!current[segments[i]]) {
-      return def;
+      return defaultValue;
     }
 
     // Otherwise, update the current  value
@@ -34,5 +37,6 @@ function stringToSegments(path) {
         allSegments.push(key);
       }
     });
+    return allSegments;
   }, []);
 }

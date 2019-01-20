@@ -2,6 +2,7 @@
   "name": "@madebyconnor/rich-text-to-jsx",
   "version": "0.3.0",
   "description": "JSX renderer for the Contentful rich text field type.",
+  "sideEffects": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.js",
@@ -15,13 +16,19 @@
     "start": "rollup --config --watch",
     "build": "rollup --config",
     "prepublishOnly": "yarn build",
-    "lint": "foundry run eslint --fix --quiet src/**/*.js"
+    "lint": "foundry run eslint --fix --quiet src/**/*.js",
+    "test": "jest --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@sumup/foundry": "^1.0.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "react": "^16.7.0",
+    "regenerator-runtime": "^0.13.1",
     "rollup": "^1.1.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
