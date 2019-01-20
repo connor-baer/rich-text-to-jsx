@@ -1,5 +1,5 @@
-import RichText from './RichText';
-import richTextToJsx from './RichTextService';
+import RichText from './components/RichText';
+import richTextToJsx from './rich-text-to-jsx';
 
 export { richTextToJsx };
 

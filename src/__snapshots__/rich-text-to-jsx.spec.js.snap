@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rich text to JSX customNodeToJsx should render an embedded entry block 1`] = `
+<Override
+  contentType="page"
+  id="32v7TZ7YQEaugOeew4SymY"
+  slug="about"
+  title="Title: About Acme Corp"
+  updatedAt="2019-01-18T14:37:30.221Z"
+/>
+`;
+
+exports[`Rich text to JSX customNodeToJsx should render an embedded entry inline 1`] = `
+<Override
+  contentType="page"
+  id="32v7TZ7YQEaugOeew4SymY"
+  slug="about"
+  title="Title: About Acme Corp"
+  updatedAt="2019-01-18T14:37:30.221Z"
+/>
+`;
+
+exports[`Rich text to JSX customNodeToJsx should render an entry hyperlink 1`] = `
+<Override
+  contentType="route"
+  id="32v7TZ7YQEaugOeew4SymY"
+  slug="about"
+  updatedAt="2019-01-18T14:37:30.221Z"
+>
+  This is a link to an entry.
+</Override>
+`;
+
+exports[`Rich text to JSX parentNodeToJsx should render a node and its children 1`] = `
+<ul>
+  <li>
+    <p>
+      This is normal text.
+      <strong>
+        This is bold text.
+      </strong>
+      <em>
+        This is italic text.
+      </em>
+      <u>
+        This is underlined text.
+      </u>
+      <a
+        href="https://acme.com"
+      >
+        This is a hyperlink.
+      </a>
+    </p>
+  </li>
+  <li>
+    <p>
+      This is normal text.
+      <strong>
+        This is bold text.
+      </strong>
+      <em>
+        This is italic text.
+      </em>
+      <u>
+        This is underlined text.
+      </u>
+      <a
+        href="https://acme.com"
+      >
+        This is a hyperlink.
+      </a>
+    </p>
+  </li>
+  <li>
+    <p>
+      This is normal text.
+      <strong>
+        This is bold text.
+      </strong>
+      <em>
+        This is italic text.
+      </em>
+      <u>
+        This is underlined text.
+      </u>
+      <a
+        href="https://acme.com"
+      >
+        This is a hyperlink.
+      </a>
+    </p>
+  </li>
+</ul>
+`;
+
+exports[`Rich text to JSX parentNodeToJsx should render a node without children 1`] = `<hr />`;
+
+exports[`Rich text to JSX richTextToJsx should parse and render rich text into JSX 1`] = `
+Array [
+  <p>
+    This is normal text.
+    <strong>
+      This is bold text.
+    </strong>
+    <em>
+      This is italic text.
+    </em>
+    <u>
+      This is underlined text.
+    </u>
+    <a
+      href="https://acme.com"
+    >
+      This is a hyperlink.
+    </a>
+  </p>,
+]
+`;
+
+exports[`Rich text to JSX textNodeToJsx should render a text node 1`] = `"This is normal text."`;
+
+exports[`Rich text to JSX textNodeToJsx should render a text node with a mark 1`] = `
+<strong>
+  This is bold text.
+</strong>
+`;
+
+exports[`Rich text to JSX textNodeToJsx should render a text node with multiple marks 1`] = `
+<em>
+  <strong>
+    This is bold and italic text.
+  </strong>
+</em>
+`;
+
+exports[`Rich text to JSX unknownNodeToJsx should render an unknown element 1`] = `
+<UnknownElement>
+  This is normal text.
+  <strong>
+    This is bold text.
+  </strong>
+  <em>
+    This is italic text.
+  </em>
+  <u>
+    This is underlined text.
+  </u>
+  <a
+    href="https://acme.com"
+  >
+    This is a hyperlink.
+  </a>
+</UnknownElement>
+`;

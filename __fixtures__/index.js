@@ -155,7 +155,6 @@ const entry = {
   contentType: 'page',
   updatedAt: '2019-01-18T14:37:30.221Z',
   slug: 'about',
-  image: asset,
   title: 'Title: About Acme Corp'
 };
 
@@ -165,6 +164,21 @@ export const embeddedAsset = {
   },
   content: [],
   nodeType: 'embedded-asset-block'
+};
+
+export const assetHyperlink = {
+  data: {
+    target: asset
+  },
+  content: [
+    {
+      data: {},
+      marks: [],
+      value: 'ham hock',
+      nodeType: 'text'
+    }
+  ],
+  nodeType: 'asset-hyperlink'
 };
 
 export const entryHyperlink = {

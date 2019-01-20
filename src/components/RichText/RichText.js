@@ -1,4 +1,4 @@
-import richTextToJsx from './RichTextService';
+import richTextToJsx from '../../rich-text-to-jsx';
 
 /**
  * Parse and render Contentful rich text to JSX.

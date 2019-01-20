@@ -32,10 +32,7 @@ if (process.env.NODE_ENV !== 'production') {
     /**
      * The element children.
      */
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ])
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array])
   };
 }
 

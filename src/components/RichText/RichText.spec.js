@@ -8,7 +8,7 @@ import {
   unorderedList,
   blockquote,
   hr
-} from '../__fixtures__';
+} from '../../../__fixtures__';
 
 import RichText from './RichText';
 
