@@ -27,4 +27,4 @@ script:
   - yarn lint
   - yarn build
   - yarn size
-  - codecov
+  - yarn codecov
