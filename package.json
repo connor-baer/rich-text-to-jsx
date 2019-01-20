@@ -40,6 +40,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest": "^23.6.0",
+    "jest-serializer-html": "^6.0.0",
     "react": "^16.7.0",
     "regenerator-runtime": "^0.13.1",
     "rollup": "^1.1.1",
