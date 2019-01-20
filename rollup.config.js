@@ -17,12 +17,14 @@ const config = {
     {
       file: pkg.browser,
       format: 'umd',
-      name: 'Example',
+      name: 'richTextToJsx',
+      exports: 'named',
       globals
     },
     {
       file: pkg.main,
       format: 'cjs',
+      exports: 'named',
       globals
     },
     {
