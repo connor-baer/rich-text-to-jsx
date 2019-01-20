@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 /**
  * Default element when the node type is unknown.
@@ -10,10 +10,12 @@ function UnknownElement(props) {
     console.debug(`Node type is undefined`, props);
 
     return (
-      <div style={{ color: 'white', backgroundColor: 'red' }}>
-        Nodetype is undefined. Check the console for more info.
+      <Fragment>
+        <span style={{ color: 'white', backgroundColor: 'red' }}>
+          Node type is undefined
+        </span>
         {props.children}
-      </div>
+      </Fragment>
     );
   }
 

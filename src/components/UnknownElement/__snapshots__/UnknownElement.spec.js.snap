@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UnknownElement in development should render a warning 1`] = `
-<div
+<span
   style={
     Object {
       "backgroundColor": "red",
@@ -9,24 +9,26 @@ exports[`UnknownElement in development should render a warning 1`] = `
     }
   }
 >
-  Nodetype is undefined. Check the console for more info.
-</div>
+  Node type is undefined
+</span>
 `;
 
 exports[`UnknownElement in development should render a warning and the children 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "red",
-      "color": "white",
+Array [
+  <span
+    style={
+      Object {
+        "backgroundColor": "red",
+        "color": "white",
+      }
     }
-  }
->
-  Nodetype is undefined. Check the console for more info.
+  >
+    Node type is undefined
+  </span>,
   <p>
     Foo
-  </p>
-</div>
+  </p>,
+]
 `;
 
 exports[`UnknownElement in production should render null 1`] = `null`;

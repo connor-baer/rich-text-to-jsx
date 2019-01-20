@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 /**
  * Default fallback element for block level nodes.
  * Renders a prominent warning in development.
  */
 function BlockElement(props) {
-  const { type, children } = props;
-
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
-    console.debug(`Unknown block  node type "${type}"`, props);
+    console.debug(`Unknown block  node type`, props);
     return (
-      <div style={{ color: 'white', backgroundColor: 'red' }}>
-        {`Unknown block node type "${type}" Check the console for more info.`}
-        {children}
-      </div>
+      <Fragment>
+        <span style={{ color: 'white', backgroundColor: 'red' }}>
+          Unknown block node type.
+        </span>
+        {props.children}
+      </Fragment>
     );
   }
-  return children || null;
+  return props.children || null;
 }
 
 if (process.env.NODE_ENV !== 'production') {
@@ -25,10 +25,6 @@ if (process.env.NODE_ENV !== 'production') {
   const PropTypes = require('prop-types');
 
   BlockElement.propTypes = {
-    /**
-     * The node, mark or element type
-     */
-    type: PropTypes.string,
     /**
      * The element children.
      */
