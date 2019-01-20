@@ -2,7 +2,7 @@
 
 # rich-text-to-jsx <!-- omit in TOC -->
 
-JSX renderer for the Contentful rich text field type
+JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type
 
 [![npm version](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx.svg)](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx) [![Build Status](https://travis-ci.org/connor-baer/rich-text-to-jsx.svg?branch=master)](https://travis-ci.org/connor-baer/rich-text-to-jsx) [![codecov](https://codecov.io/gh/connor-baer/rich-text-to-jsx/branch/master/graph/badge.svg)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/master/LICENSE)
 
@@ -24,10 +24,11 @@ JSX renderer for the Contentful rich text field type
 
 ---
 
-`rich-text-to-jsx` is inspired by [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx). Notably, this package offers the following additional benefits:
+[`rich-text-to-jsx`](https://www.npmjs.com/package/@madebyconnor/rich-text-to-jsx) is inspired by [`markdown-to-jsx`](https://github.com/probablyup/markdown-to-jsx). Notably, this package offers the following benefits:
 
-- Any HTML tags rendered by the compiler and/or `<React>` component can be overridden to include additional
-  props or even a different HTML representation entirely.
+- Any HTML tags (corresponding to node types) rendered by the compiler can be overridden to include additional props or even a different React component entirely.
+- Embedded entries and assets can be rendered using different components depending on whether they are inline, blocks or hyperlinks.
+- The rendering function can be customized.
 
 All this clocks in at around 4 kB gzipped.
 
@@ -47,8 +48,6 @@ npm i @madebyconnor/rich-text-to-jsx
 ## Usage
 
 `@madebyconnor/rich-text-to-jsx` exports a React component for easy JSX composition:
-
-ES6-style usage\*:
 
 ```jsx
 import React from 'react';
@@ -84,8 +83,6 @@ render(<RichText richText={richText} />, document.body);
 ```
 
 ### Parsing Options
-
-_TODO: Explain difference between built-in and custom elements._
 
 #### options.overrides - Override any node's representation
 
@@ -138,16 +135,28 @@ Any conflicts between passed `props` and the specific properties above will be r
 
 For **custom elements** (entries and assets), you need to specify the component for each possible node type. This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink.
 
-Custom elements are passed `node.data.target`.
+Custom elements receive the data in `node.data.target` as props.
 
-For example, let's say you have an entry of the content type `page`.
+For example, let's say you have an entry of the content type `page`. When the `page` entry is referenced as a hyperlink, an anchor should be rendered. When the `page` entry is embedded as a block, a preview with its title and subtitle should be rendered. Here's how you could achieve that:
 
-```js
-const PageHyperlink = ({}) => {};
+```jsx
+const PageLink = ({ slug, children }) => <a href={slug}>{children}</a>;
+const PageEmbed = ({ title, summary, className }) => (
+  <div className={className}>
+    <h2>{title}</h2>
+    <p>{summary}</p>
+  </div>
+);
 
 const overrides = {
-  contentType: {
-    [INLINES.ASSET_HYPERLINK]: MyParagraph
+  page: {
+    [INLINES.ENTRY_HYPERLINK]: PageLink,
+    [BLOCKS.EMBEDDED_ENTRY]: {
+      component: PageEmbed,
+      props: {
+        className: 'page-embed'
+      }
+    }
   }
 };
 ```
