@@ -4,13 +4,13 @@ import richTextToJsx from './RichTextService';
 /**
  * Parse and render Contentful rich text to JSX.
  */
-const RichText = ({ children, ...options }) => richTextToJsx(children, options);
+const RichText = ({ richText, ...options }) => richTextToJsx(richText, options);
 
 RichText.propTypes = {
   /**
    * The Contentful rich text AST to be parsed and rendered.
    */
-  children: PropTypes.object,
+  richText: PropTypes.object,
   /**
    * Map block types to React components, e.g. `p` -> `<Text />`
    * The React component is passed all HTML attributes as props.
