@@ -23,7 +23,7 @@ after_install:
   - yarn add react-dom@$(echo $TARGET_REACT_VERSION)
 
 script:
-  - yarn test --coverage
+  - yarn test:ci
   - yarn lint
   - yarn build
   - yarn size
