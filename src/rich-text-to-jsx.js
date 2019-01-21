@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS, helpers } from '@contentful/rich-text-types';
 
 import cx from './lib/cx';
 import get from './lib/get';
@@ -13,11 +13,6 @@ import InlineElement from './components/InlineElement';
 export const defaultOptions = {
   overrides: {},
   createElement: React.createElement
-};
-
-const customBlockNodes = {
-  [BLOCKS.EMBEDDED_ENTRY]: true,
-  [BLOCKS.EMBEDDED_ASSET]: true
 };
 
 const tagMap = {
@@ -40,6 +35,10 @@ const tagMap = {
   [MARKS.CODE]: 'code'
 };
 
+function isCustom(node) {
+  return !tagMap[node.nodeType];
+}
+
 export default function richTextToJsx(richText, options = {}) {
   if (!richText) {
     return null;
@@ -61,15 +60,11 @@ export function nodeToJsx(node = {}, options = {}, key) {
     return unknownNodeToJsx(node, options, key);
   }
 
-  const isTextNode = nodeType === 'text';
-
-  if (isTextNode) {
+  if (helpers.isText(node)) {
     return textNodeToJsx(node, options, key);
   }
 
-  const isCustomNode = !tagMap[nodeType];
-
-  if (isCustomNode) {
+  if (isCustom(node)) {
     return customNodeToJsx(node, options, key);
   }
 
@@ -123,8 +118,7 @@ export function customNodeToJsx(node, options, key) {
 
   const elementOverrides = overrides[contentType];
 
-  const isBlockNode = customBlockNodes[nodeType];
-  const DefaultElement = isBlockNode ? BlockElement : InlineElement;
+  const DefaultElement = helpers.isBlock(node) ? BlockElement : InlineElement;
   const element = getElement(nodeType, elementOverrides) || DefaultElement;
 
   const props = getProps(nodeType, elementOverrides, {
