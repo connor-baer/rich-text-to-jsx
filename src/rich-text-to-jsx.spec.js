@@ -71,11 +71,9 @@ describe('Rich text to JSX', () => {
   });
 
   describe('customNodeToJsx', () => {
-    // FIXME: Figure out how to handle assets.
-    // They don't have a content type, only a mime-type.
-    it.skip('should render an embedded asset', () => {
+    it('should render an embedded asset', () => {
       const overrides = {
-        'image/jpg': { [BLOCKS.EMBEDDED_ASSET]: Override }
+        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
       };
       const actual = RichTextService.customNodeToJsx(embeddedAsset, {
         ...options,
@@ -83,12 +81,9 @@ describe('Rich text to JSX', () => {
       });
       expect(actual).toMatchSnapshot();
     });
-
-    // FIXME: Figure out how to handle assets.
-    // They don't have a content type, only a mime-type.
-    it.skip('should render an asset hyperlink', () => {
+    it('should render an asset hyperlink', () => {
       const overrides = {
-        route: { [INLINES.ASSET_HYPERLINK]: Override }
+        [INLINES.ASSET_HYPERLINK]: { image: Override }
       };
       const actual = RichTextService.customNodeToJsx(assetHyperlink, {
         ...options,
@@ -99,7 +94,7 @@ describe('Rich text to JSX', () => {
 
     it('should render an embedded entry block', () => {
       const overrides = {
-        page: { [BLOCKS.EMBEDDED_ENTRY]: Override }
+        [BLOCKS.EMBEDDED_ENTRY]: { page: Override }
       };
       const actual = RichTextService.customNodeToJsx(embeddedEntryBlock, {
         ...options,
@@ -110,7 +105,7 @@ describe('Rich text to JSX', () => {
 
     it('should render an embedded entry inline', () => {
       const overrides = {
-        page: { [INLINES.EMBEDDED_ENTRY]: Override }
+        [INLINES.EMBEDDED_ENTRY]: { page: Override }
       };
       const actual = RichTextService.customNodeToJsx(embeddedEntryInline, {
         ...options,
@@ -121,7 +116,7 @@ describe('Rich text to JSX', () => {
 
     it('should render an entry hyperlink', () => {
       const overrides = {
-        route: { [INLINES.ENTRY_HYPERLINK]: Override }
+        [INLINES.ENTRY_HYPERLINK]: { route: Override }
       };
       const actual = RichTextService.customNodeToJsx(entryHyperlink, {
         ...options,

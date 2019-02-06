@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Rich text to JSX customNodeToJsx should render an asset hyperlink 1`] = `
+<Override
+  file={
+    Object {
+      "contentType": "image/jpg",
+      "details": Object {
+        "image": Object {
+          "height": 500,
+          "width": 800,
+        },
+        "size": 240963,
+      },
+      "fileName": "random-unsplash.jpg",
+      "url": "https://source.unsplash.com/random/800x500",
+    }
+  }
+  id="4fgGUXCJXWOQUAEQqCS8MW"
+  title="Random photo from Unsplash.com"
+  updatedAt="2019-01-14T04:57:27.049Z"
+>
+  ham hock
+</Override>
+`;
+
+exports[`Rich text to JSX customNodeToJsx should render an embedded asset 1`] = `
+<Override
+  file={
+    Object {
+      "contentType": "image/jpg",
+      "details": Object {
+        "image": Object {
+          "height": 500,
+          "width": 800,
+        },
+        "size": 240963,
+      },
+      "fileName": "random-unsplash.jpg",
+      "url": "https://source.unsplash.com/random/800x500",
+    }
+  }
+  id="4fgGUXCJXWOQUAEQqCS8MW"
+  title="Random photo from Unsplash.com"
+  updatedAt="2019-01-14T04:57:27.049Z"
+/>
+`;
+
 exports[`Rich text to JSX customNodeToJsx should render an embedded entry block 1`] = `
 <Override
   contentType="page"
