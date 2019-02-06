@@ -8,8 +8,6 @@ JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developer
 
 </div>
 
-> ⚠️ **I no longer actively maintain this package.** I decided to team up with [@mgmolisani](https://github.com/mgmolisani) to contribute an [official `rich-text-react-renderer` package](https://github.com/contentful/rich-text/pull/71) with a [more flexible API](https://github.com/contentful/rich-text/pull/65#issuecomment-456171388).
-
 <!-- TOC -->
 
 - [Installation](#installation)
