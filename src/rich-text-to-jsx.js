@@ -9,10 +9,20 @@ import isEmpty from './lib/is-empty';
 import UnknownElement from './components/UnknownElement';
 import BlockElement from './components/BlockElement';
 import InlineElement from './components/InlineElement';
+import AssetLink from './components/AssetLink';
+import Image from './components/Image';
+import Video from './components/Video';
+import Audio from './components/Audio';
 
 export const defaultOptions = {
   overrides: {},
   createElement: React.createElement
+};
+
+const assetElementMap = {
+  image: Image,
+  video: Video,
+  audio: Audio
 };
 
 const tagMap = {
@@ -35,8 +45,23 @@ const tagMap = {
   [MARKS.CODE]: 'code'
 };
 
-function isCustom(node) {
-  return !tagMap[node.nodeType];
+const entryMap = {
+  [BLOCKS.EMBEDDED_ENTRY]: true,
+  [INLINES.ENTRY_HYPERLINK]: true,
+  [INLINES.EMBEDDED_ENTRY]: true
+};
+
+const assetMap = {
+  [BLOCKS.EMBEDDED_ASSET]: true,
+  [INLINES.ASSET_HYPERLINK]: true
+};
+
+function isEntryNode(node) {
+  return entryMap[node.nodeType];
+}
+
+function isAssetNode(node) {
+  return assetMap[node.nodeType];
 }
 
 export default function richTextToJsx(richText, options = {}) {
@@ -64,8 +89,12 @@ export function nodeToJsx(node = {}, options = {}, key) {
     return textNodeToJsx(node, options, key);
   }
 
-  if (isCustom(node)) {
-    return customNodeToJsx(node, options, key);
+  if (isEntryNode(node)) {
+    return entryNodeToJsx(node, options, key);
+  }
+
+  if (isAssetNode(node)) {
+    return assetNodeToJsx(node, options, key);
   }
 
   return parentNodeToJsx(node, options, key);
@@ -106,13 +135,11 @@ export function textNodeToJsx(node, options, key) {
   }, value);
 }
 
-export function customNodeToJsx(node, options, key) {
+export function entryNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
-  const contentType =
-    get(data, 'target.contentType') ||
-    get(data, 'target.file.contentType', '').split('/')[0];
+  const contentType = get(data, 'target.contentType');
 
   if (!contentType) {
     return unknownNodeToJsx(node, options, key);
@@ -122,6 +149,39 @@ export function customNodeToJsx(node, options, key) {
 
   const DefaultElement = helpers.isBlock(node) ? BlockElement : InlineElement;
   const element = getElement(contentType, elementOverrides) || DefaultElement;
+
+  const props = getProps(nodeType, elementOverrides, {
+    ...data.target,
+    key
+  });
+
+  const children = isEmpty(content)
+    ? undefined
+    : nodeListToJsx(content, options);
+
+  return createElement(element, props, children);
+}
+
+export function assetNodeToJsx(node, options, key) {
+  const { data, content, nodeType } = node;
+  const { overrides, createElement } = options;
+
+  const mimeTypeGroup = get(data, 'target.file.contentType', '').split('/')[0];
+
+  if (!mimeTypeGroup) {
+    return unknownNodeToJsx(node, options, key);
+  }
+
+  const elementOverrides = overrides[nodeType];
+
+  const BlockAsset = assetElementMap[mimeTypeGroup];
+  const DefaultAsset = helpers.isBlock(node) ? BlockAsset : AssetLink;
+
+  const element = getElement(mimeTypeGroup, elementOverrides) || DefaultAsset;
+
+  if (!element) {
+    return unknownNodeToJsx(node, options, key);
+  }
 
   const props = getProps(nodeType, elementOverrides, {
     ...data.target,

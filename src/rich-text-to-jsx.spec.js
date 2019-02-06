@@ -10,7 +10,9 @@ import {
   boldAndItalic,
   unorderedList,
   hr,
-  embeddedAsset,
+  embeddedImage,
+  embeddedVideo,
+  embeddedAudio,
   embeddedEntryBlock,
   embeddedEntryInline,
   entryHyperlink,
@@ -23,7 +25,11 @@ describe('Rich text to JSX', () => {
 
   describe('richTextToJsx', () => {
     it('should parse and render rich text into JSX', () => {
-      const richText = createDocument([paragraph, embeddedEntryBlock]);
+      const richText = createDocument([
+        paragraph,
+        embeddedEntryBlock,
+        embeddedImage
+      ]);
       const actual = richTextToJsx(richText);
       expect(actual).toMatchSnapshot();
     });
@@ -43,6 +49,13 @@ describe('Rich text to JSX', () => {
     it('should return null if there are no nodes', () => {
       const actual = RichTextService.nodeListToJsx([], options);
       expect(actual).toBeNull();
+    });
+  });
+
+  describe('nodeToJsx', () => {
+    it('should render an unknown element if the node type is undefined', () => {
+      const actual = RichTextService.nodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
     });
   });
 
@@ -70,55 +83,34 @@ describe('Rich text to JSX', () => {
     });
   });
 
-  describe('customNodeToJsx', () => {
-    it('should render an embedded asset', () => {
-      const overrides = {
-        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
-      };
-      const actual = RichTextService.customNodeToJsx(embeddedAsset, {
-        ...options,
-        overrides
-      });
-      expect(actual).toMatchSnapshot();
-    });
-    it('should render an asset hyperlink', () => {
-      const overrides = {
-        [INLINES.ASSET_HYPERLINK]: { image: Override }
-      };
-      const actual = RichTextService.customNodeToJsx(assetHyperlink, {
-        ...options,
-        overrides
-      });
-      expect(actual).toMatchSnapshot();
-    });
-
-    it('should render an embedded entry block', () => {
+  describe('entryNodeToJsx', () => {
+    it('should render an embedded entry block override', () => {
       const overrides = {
         [BLOCKS.EMBEDDED_ENTRY]: { page: Override }
       };
-      const actual = RichTextService.customNodeToJsx(embeddedEntryBlock, {
+      const actual = RichTextService.entryNodeToJsx(embeddedEntryBlock, {
         ...options,
         overrides
       });
       expect(actual).toMatchSnapshot();
     });
 
-    it('should render an embedded entry inline', () => {
+    it('should render an embedded entry inline override', () => {
       const overrides = {
         [INLINES.EMBEDDED_ENTRY]: { page: Override }
       };
-      const actual = RichTextService.customNodeToJsx(embeddedEntryInline, {
+      const actual = RichTextService.entryNodeToJsx(embeddedEntryInline, {
         ...options,
         overrides
       });
       expect(actual).toMatchSnapshot();
     });
 
-    it('should render an entry hyperlink', () => {
+    it('should render an entry hyperlink override', () => {
       const overrides = {
         [INLINES.ENTRY_HYPERLINK]: { route: Override }
       };
-      const actual = RichTextService.customNodeToJsx(entryHyperlink, {
+      const actual = RichTextService.entryNodeToJsx(entryHyperlink, {
         ...options,
         overrides
       });
@@ -126,7 +118,73 @@ describe('Rich text to JSX', () => {
     });
 
     it('should render an unknown element if the content type is undefined', () => {
-      const actual = RichTextService.customNodeToJsx({ data: {} }, options);
+      const actual = RichTextService.entryNodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
+    });
+  });
+
+  describe('assetNodeToJsx', () => {
+    it('should render an embedded image', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedImage, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded video', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedVideo, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded audio', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedAudio, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded asset override', () => {
+      const overrides = {
+        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
+      };
+      const actual = RichTextService.assetNodeToJsx(embeddedImage, {
+        ...options,
+        overrides
+      });
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an asset hyperlink', () => {
+      const actual = RichTextService.assetNodeToJsx(assetHyperlink, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an asset hyperlink override', () => {
+      const overrides = {
+        [INLINES.ASSET_HYPERLINK]: { image: Override }
+      };
+      const actual = RichTextService.assetNodeToJsx(assetHyperlink, {
+        ...options,
+        overrides
+      });
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an unknown element if the mime type is undefined', () => {
+      const actual = RichTextService.assetNodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an unknown element if there is no component for the mime type', () => {
+      const actual = RichTextService.assetNodeToJsx(
+        {
+          nodeType: BLOCKS.EMBEDDED_ASSET,
+          data: {
+            target: {
+              file: {
+                contentType: 'spreadsheet'
+              }
+            }
+          }
+        },
+        options
+      );
       expect(actual).toMatchSnapshot();
     });
   });

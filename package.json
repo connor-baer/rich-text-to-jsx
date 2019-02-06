@@ -16,6 +16,7 @@
   "scripts": {
     "start": "rollup --config --watch",
     "build": "rollup --config",
+    "create:component": "foundry run plop component",
     "prepublishOnly": "yarn test:ci && yarn size && yarn build",
     "lint": "foundry run eslint --fix --quiet src/**/*.js",
     "test": "jest --watch",

@@ -132,7 +132,7 @@ export const hr = {
   nodeType: 'hr'
 };
 
-const asset = {
+export const image = {
   id: '4fgGUXCJXWOQUAEQqCS8MW',
   updatedAt: '2019-01-14T04:57:27.049Z',
   title: 'Random photo from Unsplash.com',
@@ -150,17 +150,57 @@ const asset = {
   }
 };
 
-const entry = {
-  id: '32v7TZ7YQEaugOeew4SymY',
-  contentType: 'page',
-  updatedAt: '2019-01-18T14:37:30.221Z',
-  slug: 'about',
-  title: 'Title: About Acme Corp'
+export const video = {
+  id: '4fgGUXCJXWOQUAEQqCS8MW',
+  updatedAt: '2019-01-14T04:57:27.049Z',
+  title: 'Example video from YouTube',
+  file: {
+    url: 'https://youtube.com/example.mp4',
+    details: {
+      size: 2409638,
+      video: {
+        width: 1920,
+        height: 1080
+      }
+    },
+    fileName: 'example.mp4',
+    contentType: 'video/mp4'
+  }
 };
 
-export const embeddedAsset = {
+export const audio = {
+  id: '4fgGUXCJXWOQUAEQqCS8MW',
+  updatedAt: '2019-01-14T04:57:27.049Z',
+  title: 'Example audio from Spotify',
+  file: {
+    url: 'https://spotify.com/example.mp3',
+    details: {
+      size: 24096
+    },
+    fileName: 'example.mp3',
+    contentType: 'audio/mp3'
+  }
+};
+
+export const embeddedImage = {
   data: {
-    target: asset
+    target: image
+  },
+  content: [],
+  nodeType: 'embedded-asset-block'
+};
+
+export const embeddedVideo = {
+  data: {
+    target: video
+  },
+  content: [],
+  nodeType: 'embedded-asset-block'
+};
+
+export const embeddedAudio = {
+  data: {
+    target: audio
   },
   content: [],
   nodeType: 'embedded-asset-block'
@@ -168,7 +208,7 @@ export const embeddedAsset = {
 
 export const assetHyperlink = {
   data: {
-    target: asset
+    target: image
   },
   content: [
     {
@@ -179,6 +219,14 @@ export const assetHyperlink = {
     }
   ],
   nodeType: 'asset-hyperlink'
+};
+
+const entry = {
+  id: '32v7TZ7YQEaugOeew4SymY',
+  contentType: 'page',
+  updatedAt: '2019-01-18T14:37:30.221Z',
+  slug: 'about',
+  title: 'Title: About Acme Corp'
 };
 
 export const entryHyperlink = {

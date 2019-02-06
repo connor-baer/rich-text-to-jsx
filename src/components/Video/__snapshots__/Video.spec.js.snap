@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video should render a responsive video 1`] = `
+<video
+  controls={true}
+  style={
+    Object {
+      "display": "block",
+      "height": "auto",
+      "maxWidth": "100%",
+    }
+  }
+>
+  <source
+    src="https://youtube.com/example.mp4"
+    type="video/mp4"
+  />
+  <p>
+    Your browser does not support HTML5 video. Here is a
+     
+    <a
+      download={true}
+      href="https://youtube.com/example.mp4"
+    >
+      link to the video
+    </a>
+     
+    instead.
+  </p>
+</video>
+`;
