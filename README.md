@@ -11,13 +11,15 @@ JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developer
 <!-- TOC -->
 
 - [Installation](#installation)
-- [Usage](#usage)
-  - [Parsing Options](#parsing-options)
-    - [options.overrides - Override any node's representation](#optionsoverrides---override-any-nodes-representation)
-    - [options.createElement - Custom React.createElement behavior](#optionscreateelement---custom-reactcreateelement-behavior)
-  - [Getting the smallest possible bundle size](#getting-the-smallest-possible-bundle-size)
-  - [Usage with Preact](#usage-with-preact)
-  - [Using the compiler directly](#using-the-compiler-directly)
+- [Getting started](#getting-started)
+- [Parsing Options](#parsing-options)
+  - [options.overrides - Override any node's representation](#optionsoverrides---override-any-nodes-representation)
+    - [Entries](#entries)
+    - [Assets](#assets)
+  - [options.createElement - Custom React.createElement behavior](#optionscreateelement---custom-reactcreateelement-behavior)
+- [Using the compiler directly](#using-the-compiler-directly)
+- [Getting the smallest possible bundle size](#getting-the-smallest-possible-bundle-size)
+- [Usage with Preact](#usage-with-preact)
 - [Changelog](#changelog)
 
 <!-- /TOC -->
@@ -45,7 +47,7 @@ yarn add @madebyconnor/rich-text-to-jsx
 npm i @madebyconnor/rich-text-to-jsx
 ```
 
-## Usage
+## Getting started
 
 `@madebyconnor/rich-text-to-jsx` exports a React component for easy JSX composition:
 
@@ -82,9 +84,9 @@ render(<RichText richText={richText} />, document.body);
  */
 ```
 
-### Parsing Options
+## Parsing Options
 
-#### options.overrides - Override any node's representation
+### options.overrides - Override any node's representation
 
 Pass the `options.overrides` prop to the compiler or the `<RichText>` component to seamlessly revise the rendered representation of any node type. You can choose to change the component itself, add/change props, or both.
 
@@ -139,9 +141,9 @@ const overrides = {
 
 Any conflicts between passed `props` and the specific properties above will be resolved in favor of `@madebyconnor/rich-text-to-jsx`'s code. `classNames` are merged automatically. The `uri` prop on `INLINES.HYPERLINK` nodes is renamed to `href` for convenience.
 
-For **custom elements** (entries and assets), you need to specify the component for each possible node type and content type (entries) or [mime type group](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type) (assets). This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink.
+#### Entries
 
-Custom elements receive the data in `node.data.target` as props.
+For embedded entries, you need to specify the component for each possible node type and content type. This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink. The component receives the data in `node.data.target` as props.
 
 Let's say you have an entry of the content type `page`. When the `page` entry is referenced as a hyperlink, an anchor should be rendered. When the `page` entry is embedded as a block, a preview with its title and subtitle should be rendered. Here's how you could achieve that:
 
@@ -169,7 +171,9 @@ const overrides = {
 };
 ```
 
-And here's a similar example with an asset:
+#### Assets
+
+Embedded assets work very similar to [entries](#Entries). However, assets don't have a content type, so instead you can define custom components for each [mime type group](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type). Here's an example:
 
 ```jsx
 const ImageLink = ({ file, title }) => (
@@ -196,7 +200,7 @@ const overrides = {
 };
 ```
 
-#### options.createElement - Custom React.createElement behavior
+### options.createElement - Custom React.createElement behavior
 
 Sometimes, you might want to override the `React.createElement` default behavior to hook into the rendering process before the JSX gets rendered. This might be useful to add extra children or modify some props based on runtime conditions. The function mirrors the `React.createElement` function, so the params are [`type, [props], [...children]`](https://reactjs.org/docs/react-api.html#createelement):
 
@@ -226,22 +230,7 @@ render(
  */
 ```
 
-### Getting the smallest possible bundle size
-
-Many development conveniences are placed behind `process.env.NODE_ENV !== "production"` conditionals. When bundling your app, it's a good idea to replace these code snippets such that a minifier (like uglify) can sweep them away and leave a smaller overall bundle.
-
-Here are instructions for some of the popular bundlers:
-
-- [webpack](https://webpack.js.org/guides/production/#specify-the-environment)
-- [browserify plugin](https://github.com/hughsk/envify)
-- [parcel](https://parceljs.org/production.html)
-- [fuse-box](http://fuse-box.org/plugins/replace-plugin#notes)
-
-### Usage with Preact
-
-Everything will work just fine! Simply [Alias `react` to `preact-compat`](https://github.com/developit/preact-compat#usage-with-webpack) like you probably already are doing.
-
-### Using the compiler directly
+## Using the compiler directly
 
 If desired, the compiler function is a named export on the `@madebyconnor/rich-text-to-jsx` module:
 
@@ -260,6 +249,21 @@ It accepts the following arguments:
 ```js
 richTextToJsx(richText: string, options: object?)
 ```
+
+## Getting the smallest possible bundle size
+
+Many development conveniences are placed behind `process.env.NODE_ENV !== "production"` conditionals. When bundling your app, it's a good idea to replace these code snippets such that a minifier (like uglify) can sweep them away and leave a smaller overall bundle.
+
+Here are instructions for some of the popular bundlers:
+
+- [webpack](https://webpack.js.org/guides/production/#specify-the-environment)
+- [browserify plugin](https://github.com/hughsk/envify)
+- [parcel](https://parceljs.org/production.html)
+- [fuse-box](http://fuse-box.org/plugins/replace-plugin#notes)
+
+## Usage with Preact
+
+Everything will work just fine! Simply [Alias `react` to `preact-compat`](https://github.com/developit/preact-compat#usage-with-webpack) like you probably already are doing.
 
 ## Changelog
 
