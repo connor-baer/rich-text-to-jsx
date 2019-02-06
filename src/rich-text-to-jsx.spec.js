@@ -12,6 +12,7 @@ import {
   hr,
   embeddedImage,
   embeddedVideo,
+  embeddedAudio,
   embeddedEntryBlock,
   embeddedEntryInline,
   entryHyperlink,
@@ -24,7 +25,11 @@ describe('Rich text to JSX', () => {
 
   describe('richTextToJsx', () => {
     it('should parse and render rich text into JSX', () => {
-      const richText = createDocument([paragraph, embeddedEntryBlock]);
+      const richText = createDocument([
+        paragraph,
+        embeddedEntryBlock,
+        embeddedImage
+      ]);
       const actual = richTextToJsx(richText);
       expect(actual).toMatchSnapshot();
     });
@@ -44,6 +49,13 @@ describe('Rich text to JSX', () => {
     it('should return null if there are no nodes', () => {
       const actual = RichTextService.nodeListToJsx([], options);
       expect(actual).toBeNull();
+    });
+  });
+
+  describe('nodeToJsx', () => {
+    it('should render an unknown element if the node type is undefined', () => {
+      const actual = RichTextService.nodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
     });
   });
 
@@ -122,7 +134,12 @@ describe('Rich text to JSX', () => {
       expect(actual).toMatchSnapshot();
     });
 
-    it('should render an embedded image override', () => {
+    it('should render an embedded audio', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedAudio, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded asset override', () => {
       const overrides = {
         [BLOCKS.EMBEDDED_ASSET]: { image: Override }
       };
@@ -150,7 +167,24 @@ describe('Rich text to JSX', () => {
     });
 
     it('should render an unknown element if the mime type is undefined', () => {
-      const actual = RichTextService.entryNodeToJsx({ data: {} }, options);
+      const actual = RichTextService.assetNodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an unknown element if there is no component for the mime type', () => {
+      const actual = RichTextService.assetNodeToJsx(
+        {
+          nodeType: BLOCKS.EMBEDDED_ASSET,
+          data: {
+            target: {
+              file: {
+                contentType: 'spreadsheet'
+              }
+            }
+          }
+        },
+        options
+      );
       expect(actual).toMatchSnapshot();
     });
   });

@@ -8,14 +8,14 @@ function Audio({ file }) {
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
     <audio
-      style={{ display: 'block', maxWidth: '100 %', height: 'auto' }}
+      style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
       controls
     >
       <source src={file.url} type={file.contentType} />
       <p>
         Your browser does not support HTML5 audio. Here is a{' '}
         <a href={file.url} download>
-          link to the audio
+          link to the audio file
         </a>{' '}
         instead.
       </p>

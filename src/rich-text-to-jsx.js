@@ -52,15 +52,15 @@ const entryMap = {
 };
 
 const assetMap = {
-  [INLINES.EMBEDDED_ASSET]: true,
+  [BLOCKS.EMBEDDED_ASSET]: true,
   [INLINES.ASSET_HYPERLINK]: true
 };
 
-function isEntry(node) {
+function isEntryNode(node) {
   return entryMap[node.nodeType];
 }
 
-function isAsset(node) {
+function isAssetNode(node) {
   return assetMap[node.nodeType];
 }
 
@@ -89,11 +89,11 @@ export function nodeToJsx(node = {}, options = {}, key) {
     return textNodeToJsx(node, options, key);
   }
 
-  if (isEntry(node)) {
+  if (isEntryNode(node)) {
     return entryNodeToJsx(node, options, key);
   }
 
-  if (isAsset(node)) {
+  if (isAssetNode(node)) {
     return assetNodeToJsx(node, options, key);
   }
 

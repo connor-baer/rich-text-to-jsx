@@ -8,7 +8,7 @@ function Video({ file }) {
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
     <video
-      style={{ display: 'block', maxWidth: '100 %', height: 'auto' }}
+      style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
       controls
     >
       <source src={file.url} type={file.contentType} />

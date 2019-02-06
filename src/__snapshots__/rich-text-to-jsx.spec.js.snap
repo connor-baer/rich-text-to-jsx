@@ -48,8 +48,8 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink overri
 </Override>
 `;
 
-exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
-<Image
+exports[`Rich text to JSX assetNodeToJsx should render an embedded asset override 1`] = `
+<Override
   file={
     Object {
       "contentType": "image/jpg",
@@ -70,8 +70,26 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
 />
 `;
 
-exports[`Rich text to JSX assetNodeToJsx should render an embedded image override 1`] = `
-<Override
+exports[`Rich text to JSX assetNodeToJsx should render an embedded audio 1`] = `
+<Audio
+  file={
+    Object {
+      "contentType": "audio/mp3",
+      "details": Object {
+        "size": 24096,
+      },
+      "fileName": "example.mp3",
+      "url": "https://spotify.com/example.mp3",
+    }
+  }
+  id="4fgGUXCJXWOQUAEQqCS8MW"
+  title="Example audio from Spotify"
+  updatedAt="2019-01-14T04:57:27.049Z"
+/>
+`;
+
+exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
+<Image
   file={
     Object {
       "contentType": "image/jpg",
@@ -98,11 +116,11 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded video 1`] = `
     Object {
       "contentType": "video/mp4",
       "details": Object {
-        "image": Object {
+        "size": 2409638,
+        "video": Object {
           "height": 1080,
           "width": 1920,
         },
-        "size": 2409638,
       },
       "fileName": "example.mp4",
       "url": "https://youtube.com/example.mp4",
@@ -115,6 +133,16 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded video 1`] = `
 `;
 
 exports[`Rich text to JSX assetNodeToJsx should render an unknown element if the mime type is undefined 1`] = `<UnknownElement />`;
+
+exports[`Rich text to JSX assetNodeToJsx should render an unknown element if there is no component for the mime type 1`] = `
+<UnknownElement
+  file={
+    Object {
+      "contentType": "spreadsheet",
+    }
+  }
+/>
+`;
 
 exports[`Rich text to JSX entryNodeToJsx should render an embedded entry block override 1`] = `
 <Override
@@ -148,6 +176,8 @@ exports[`Rich text to JSX entryNodeToJsx should render an entry hyperlink overri
 `;
 
 exports[`Rich text to JSX entryNodeToJsx should render an unknown element if the content type is undefined 1`] = `<UnknownElement />`;
+
+exports[`Rich text to JSX nodeToJsx should render an unknown element if the node type is undefined 1`] = `<UnknownElement />`;
 
 exports[`Rich text to JSX parentNodeToJsx should render a node and its children 1`] = `
 <ul>
@@ -238,6 +268,25 @@ Array [
     slug="about"
     title="Title: About Acme Corp"
     updatedAt="2019-01-18T14:37:30.221Z"
+  />,
+  <Image
+    file={
+      Object {
+        "contentType": "image/jpg",
+        "details": Object {
+          "image": Object {
+            "height": 500,
+            "width": 800,
+          },
+          "size": 240963,
+        },
+        "fileName": "random-unsplash.jpg",
+        "url": "https://source.unsplash.com/random/800x500",
+      }
+    }
+    id="4fgGUXCJXWOQUAEQqCS8MW"
+    title="Random photo from Unsplash.com"
+    updatedAt="2019-01-14T04:57:27.049Z"
   />,
 ]
 `;

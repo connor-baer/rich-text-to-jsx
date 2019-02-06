@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Audio should render an HTML5 audio player 1`] = `
+<audio
+  controls={true}
+  style={
+    Object {
+      "display": "block",
+      "height": "auto",
+      "maxWidth": "100%",
+    }
+  }
+>
+  <source
+    src="https://spotify.com/example.mp3"
+    type="audio/mp3"
+  />
+  <p>
+    Your browser does not support HTML5 audio. Here is a
+     
+    <a
+      download={true}
+      href="https://spotify.com/example.mp3"
+    >
+      link to the audio file
+    </a>
+     
+    instead.
+  </p>
+</audio>
+`;

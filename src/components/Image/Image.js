@@ -9,7 +9,7 @@ function Image({ file, title }) {
     <img
       src={file.url}
       alt={title}
-      style={{ maxWidth: '100 %', height: 'auto' }}
+      style={{ maxWidth: '100%', height: 'auto' }}
     />
   );
 }
