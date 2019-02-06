@@ -110,16 +110,18 @@ export function customNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
-  const contentType = get(data, 'target.contentType');
+  const contentType =
+    get(data, 'target.contentType') ||
+    get(data, 'target.file.contentType', '').split('/')[0];
 
   if (!contentType) {
     return unknownNodeToJsx(node, options, key);
   }
 
-  const elementOverrides = overrides[contentType];
+  const elementOverrides = overrides[nodeType];
 
   const DefaultElement = helpers.isBlock(node) ? BlockElement : InlineElement;
-  const element = getElement(nodeType, elementOverrides) || DefaultElement;
+  const element = getElement(contentType, elementOverrides) || DefaultElement;
 
   const props = getProps(nodeType, elementOverrides, {
     ...data.target,
