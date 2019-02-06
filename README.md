@@ -132,7 +132,7 @@ const overrides = {
   [BLOCKS.PARAGRAPH]: MyParagraph
 };
 
-// or
+// or by HTML tag
 
 const overrides = {
   p: MyParagraph

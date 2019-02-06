@@ -132,7 +132,7 @@ export const hr = {
   nodeType: 'hr'
 };
 
-const asset = {
+const image = {
   id: '4fgGUXCJXWOQUAEQqCS8MW',
   updatedAt: '2019-01-14T04:57:27.049Z',
   title: 'Random photo from Unsplash.com',
@@ -150,6 +150,24 @@ const asset = {
   }
 };
 
+const video = {
+  id: '4fgGUXCJXWOQUAEQqCS8MW',
+  updatedAt: '2019-01-14T04:57:27.049Z',
+  title: 'Example video from YouTube',
+  file: {
+    url: 'https://youtube.com/example.mp4',
+    details: {
+      size: 2409638,
+      image: {
+        width: 1920,
+        height: 1080
+      }
+    },
+    fileName: 'example.mp4',
+    contentType: 'video/mp4'
+  }
+};
+
 const entry = {
   id: '32v7TZ7YQEaugOeew4SymY',
   contentType: 'page',
@@ -158,9 +176,17 @@ const entry = {
   title: 'Title: About Acme Corp'
 };
 
-export const embeddedAsset = {
+export const embeddedImage = {
   data: {
-    target: asset
+    target: image
+  },
+  content: [],
+  nodeType: 'embedded-asset-block'
+};
+
+export const embeddedVideo = {
+  data: {
+    target: video
   },
   content: [],
   nodeType: 'embedded-asset-block'
@@ -168,7 +194,7 @@ export const embeddedAsset = {
 
 export const assetHyperlink = {
   data: {
-    target: asset
+    target: image
   },
   content: [
     {

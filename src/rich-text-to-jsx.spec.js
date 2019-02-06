@@ -10,7 +10,8 @@ import {
   boldAndItalic,
   unorderedList,
   hr,
-  embeddedAsset,
+  embeddedImage,
+  embeddedVideo,
   embeddedEntryBlock,
   embeddedEntryInline,
   entryHyperlink,
@@ -70,55 +71,34 @@ describe('Rich text to JSX', () => {
     });
   });
 
-  describe('customNodeToJsx', () => {
-    it('should render an embedded asset', () => {
-      const overrides = {
-        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
-      };
-      const actual = RichTextService.customNodeToJsx(embeddedAsset, {
-        ...options,
-        overrides
-      });
-      expect(actual).toMatchSnapshot();
-    });
-    it('should render an asset hyperlink', () => {
-      const overrides = {
-        [INLINES.ASSET_HYPERLINK]: { image: Override }
-      };
-      const actual = RichTextService.customNodeToJsx(assetHyperlink, {
-        ...options,
-        overrides
-      });
-      expect(actual).toMatchSnapshot();
-    });
-
-    it('should render an embedded entry block', () => {
+  describe('entryNodeToJsx', () => {
+    it('should render an embedded entry block override', () => {
       const overrides = {
         [BLOCKS.EMBEDDED_ENTRY]: { page: Override }
       };
-      const actual = RichTextService.customNodeToJsx(embeddedEntryBlock, {
+      const actual = RichTextService.entryNodeToJsx(embeddedEntryBlock, {
         ...options,
         overrides
       });
       expect(actual).toMatchSnapshot();
     });
 
-    it('should render an embedded entry inline', () => {
+    it('should render an embedded entry inline override', () => {
       const overrides = {
         [INLINES.EMBEDDED_ENTRY]: { page: Override }
       };
-      const actual = RichTextService.customNodeToJsx(embeddedEntryInline, {
+      const actual = RichTextService.entryNodeToJsx(embeddedEntryInline, {
         ...options,
         overrides
       });
       expect(actual).toMatchSnapshot();
     });
 
-    it('should render an entry hyperlink', () => {
+    it('should render an entry hyperlink override', () => {
       const overrides = {
         [INLINES.ENTRY_HYPERLINK]: { route: Override }
       };
-      const actual = RichTextService.customNodeToJsx(entryHyperlink, {
+      const actual = RichTextService.entryNodeToJsx(entryHyperlink, {
         ...options,
         overrides
       });
@@ -126,7 +106,51 @@ describe('Rich text to JSX', () => {
     });
 
     it('should render an unknown element if the content type is undefined', () => {
-      const actual = RichTextService.customNodeToJsx({ data: {} }, options);
+      const actual = RichTextService.entryNodeToJsx({ data: {} }, options);
+      expect(actual).toMatchSnapshot();
+    });
+  });
+
+  describe('assetNodeToJsx', () => {
+    it('should render an embedded image', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedImage, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded video', () => {
+      const actual = RichTextService.assetNodeToJsx(embeddedVideo, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an embedded image override', () => {
+      const overrides = {
+        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
+      };
+      const actual = RichTextService.assetNodeToJsx(embeddedImage, {
+        ...options,
+        overrides
+      });
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an asset hyperlink', () => {
+      const actual = RichTextService.assetNodeToJsx(assetHyperlink, options);
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an asset hyperlink override', () => {
+      const overrides = {
+        [INLINES.ASSET_HYPERLINK]: { image: Override }
+      };
+      const actual = RichTextService.assetNodeToJsx(assetHyperlink, {
+        ...options,
+        overrides
+      });
+      expect(actual).toMatchSnapshot();
+    });
+
+    it('should render an unknown element if the mime type is undefined', () => {
+      const actual = RichTextService.entryNodeToJsx({ data: {} }, options);
       expect(actual).toMatchSnapshot();
     });
   });
