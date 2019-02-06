@@ -129,19 +129,25 @@ If you only wish to provide a component override, a simplified syntax is availab
 const overrides = {
   [BLOCKS.PARAGRAPH]: MyParagraph
 };
+
+// or
+
+const overrides = {
+  p: MyParagraph
+};
 ```
 
 Any conflicts between passed `props` and the specific properties above will be resolved in favor of `@madebyconnor/rich-text-to-jsx`'s code. `classNames` are merged automatically. The `uri` prop on `INLINES.HYPERLINK` nodes is renamed to `href` for convenience.
 
-For **custom elements** (entries and assets), you need to specify the component for each possible node type. This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink.
+For **custom elements** (entries and assets), you need to specify the component for each possible node type and content type (entries) or [mime type group](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type) (assets). This enables you to use different components for the same entry, depending on whether it is rendered inline, as a block or as a hyperlink.
 
 Custom elements receive the data in `node.data.target` as props.
 
-For example, let's say you have an entry of the content type `page`. When the `page` entry is referenced as a hyperlink, an anchor should be rendered. When the `page` entry is embedded as a block, a preview with its title and subtitle should be rendered. Here's how you could achieve that:
+Let's say you have an entry of the content type `page`. When the `page` entry is referenced as a hyperlink, an anchor should be rendered. When the `page` entry is embedded as a block, a preview with its title and subtitle should be rendered. Here's how you could achieve that:
 
 ```jsx
 const PageLink = ({ slug, children }) => <a href={slug}>{children}</a>;
-const PageEmbed = ({ title, summary, className }) => (
+const PagePreview = ({ title, summary, className }) => (
   <div className={className}>
     <h2>{title}</h2>
     <p>{summary}</p>
@@ -149,12 +155,41 @@ const PageEmbed = ({ title, summary, className }) => (
 );
 
 const overrides = {
-  page: {
-    [INLINES.ENTRY_HYPERLINK]: PageLink,
-    [BLOCKS.EMBEDDED_ENTRY]: {
-      component: PageEmbed,
+  [INLINES.ENTRY_HYPERLINK]: {
+    page: PageLink
+  },
+  [BLOCKS.EMBEDDED_ENTRY]: {
+    page: {
+      component: PagePreview,
       props: {
-        className: 'page-embed'
+        className: 'page-preview'
+      }
+    }
+  }
+};
+```
+
+And here's a similar example with an asset:
+
+```jsx
+const ImageLink = ({ file, title }) => (
+  <a href={file.url} download>
+    {title}
+  </a>
+);
+const Image = ({ file, title, className }) => (
+  <img className={className} src={file.url} alt={title} />
+);
+
+const overrides = {
+  [INLINES.ENTRY_HYPERLINK]: {
+    image: ImageLink
+  },
+  [BLOCKS.EMBEDDED_ENTRY]: {
+    image: {
+      component: Image,
+      props: {
+        className: 'image--fullwidth'
       }
     }
   }
