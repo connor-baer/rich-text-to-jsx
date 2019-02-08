@@ -139,7 +139,10 @@ export function entryNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
-  const contentType = get(data, 'target.contentType');
+  let contentType = get(data, 'target.contentType');
+  if(!contentType) {
+    contentType = get(data, 'target.sys.contentType.sys.id');
+  }
 
   if (!contentType) {
     return unknownNodeToJsx(node, options, key);
