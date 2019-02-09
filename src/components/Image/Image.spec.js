@@ -1,7 +1,7 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 
-import { image } from '../../../__fixtures__';
+import { image } from '../../__fixtures__';
 import Image from './Image';
 
 describe('Image', () => {

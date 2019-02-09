@@ -17,7 +17,7 @@ import {
   embeddedEntryInline,
   entryHyperlink,
   assetHyperlink
-} from '../__fixtures__';
+} from './__fixtures__';
 
 describe('Rich text to JSX', () => {
   const options = RichTextService.defaultOptions;
