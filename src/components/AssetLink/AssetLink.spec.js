@@ -1,24 +1,12 @@
 import React from 'react';
+import { create } from 'react-test-renderer';
 
+import { image } from '../../__fixtures__';
 import AssetLink from './AssetLink';
 
-describe.skip('AssetLink', () => {
-  // !TODO: write your tests.
-  describe('styles', () => {
-    it('should render with default styles', () => {
-      const actual = create(<AssetLink />);
-      expect(actual).toMatchSnapshot();
-    });
-  });
-
-  describe('business logic', () => {
-    it('should have tests');
-  });
-  describe('accessibility', () => {
-    it('should meet accessibility guidelines', async () => {
-      const wrapper = renderToHtml(<AssetLink />);
-      const actual = await axe(wrapper);
-      expect(actual).toHaveNoViolations();
-    });
+describe('AssetLink', () => {
+  it('should render an asset link', () => {
+    const actual = create(<AssetLink {...image} />);
+    expect(actual).toMatchSnapshot();
   });
 });
