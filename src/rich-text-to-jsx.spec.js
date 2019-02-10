@@ -17,7 +17,7 @@ import {
   embeddedEntryInline,
   entryHyperlink,
   assetHyperlink
-} from '../__fixtures__';
+} from './__fixtures__';
 
 describe('Rich text to JSX', () => {
   const options = RichTextService.defaultOptions;
@@ -108,7 +108,7 @@ describe('Rich text to JSX', () => {
 
     it('should render an entry hyperlink override', () => {
       const overrides = {
-        [INLINES.ENTRY_HYPERLINK]: { route: Override }
+        [INLINES.ENTRY_HYPERLINK]: { page: Override }
       };
       const actual = RichTextService.entryNodeToJsx(entryHyperlink, {
         ...options,

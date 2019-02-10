@@ -139,10 +139,7 @@ export function entryNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
-  let contentType = get(data, 'target.contentType');
-  if(!contentType) {
-    contentType = get(data, 'target.sys.contentType.sys.id');
-  }
+  const contentType = get(data, 'target.sys.contentType.sys.id');
 
   if (!contentType) {
     return unknownNodeToJsx(node, options, key);
@@ -169,7 +166,8 @@ export function assetNodeToJsx(node, options, key) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
-  const mimeTypeGroup = get(data, 'target.file.contentType', '').split('/')[0];
+  const mimeType = get(data, 'target.fields.file.contentType', '');
+  const mimeTypeGroup = mimeType.split('/')[0];
 
   if (!mimeTypeGroup) {
     return unknownNodeToJsx(node, options, key);

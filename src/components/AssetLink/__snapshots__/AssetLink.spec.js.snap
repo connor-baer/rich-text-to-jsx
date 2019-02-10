@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetLink should render an asset link 1`] = `
+<a
+  download={true}
+  href="https://source.unsplash.com/random/800x500"
+>
+  Random photo from Unsplash.com
+</a>
+`;

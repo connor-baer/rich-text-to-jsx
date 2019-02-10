@@ -1,7 +1,7 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 
-import { audio } from '../../../__fixtures__';
+import { audio } from '../../__fixtures__';
 import Audio from './Audio';
 
 describe('Audio', () => {

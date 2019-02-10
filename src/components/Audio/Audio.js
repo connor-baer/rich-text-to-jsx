@@ -4,7 +4,8 @@ import React from 'react';
  * Default element for audio files.
  * Renders a responsive audio player.
  */
-function Audio({ file }) {
+function Audio({ fields }) {
+  const { file } = fields;
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
     <audio
@@ -28,11 +29,13 @@ if (process.env.NODE_ENV !== 'production') {
   const PropTypes = require('prop-types');
 
   Audio.propTypes = {
-    /**
-     * The file meta data, including the source URL
-     */
-    file: PropTypes.shape({
-      url: PropTypes.string
+    fields: PropTypes.shape({
+      /**
+       * The file meta data, including the source URL
+       */
+      file: PropTypes.shape({
+        url: PropTypes.string
+      })
     })
   };
 }

@@ -4,7 +4,8 @@ import React from 'react';
  * Default element for images.
  * Renders a responsive image.
  */
-function Image({ file, title }) {
+function Image({ fields }) {
+  const { file, title } = fields;
   return (
     <img
       src={file.url}
@@ -19,16 +20,18 @@ if (process.env.NODE_ENV !== 'production') {
   const PropTypes = require('prop-types');
 
   Image.propTypes = {
-    /**
-     * The file meta data, including the source URL
-     */
-    file: PropTypes.shape({
-      url: PropTypes.string
-    }),
-    /**
-     * The asset title
-     */
-    title: PropTypes.string
+    fields: PropTypes.shape({
+      /**
+       * The file meta data, including the source URL
+       */
+      file: PropTypes.shape({
+        url: PropTypes.string
+      }),
+      /**
+       * The asset title
+       */
+      title: PropTypes.string
+    })
   };
 }
 
