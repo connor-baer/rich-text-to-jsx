@@ -4,7 +4,8 @@ import React from 'react';
  * Default element for videos.
  * Renders a responsive video player.
  */
-function Video({ file }) {
+function Video({ fields }) {
+  const { file } = fields;
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
     <video
@@ -28,11 +29,13 @@ if (process.env.NODE_ENV !== 'production') {
   const PropTypes = require('prop-types');
 
   Video.propTypes = {
-    /**
-     * The file meta data, including the source URL
-     */
-    file: PropTypes.shape({
-      url: PropTypes.string
+    fields: PropTypes.shape({
+      /**
+       * The file meta data, including the source URL
+       */
+      file: PropTypes.shape({
+        url: PropTypes.string
+      })
     })
   };
 }

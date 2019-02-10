@@ -108,7 +108,7 @@ describe('Rich text to JSX', () => {
 
     it('should render an entry hyperlink override', () => {
       const overrides = {
-        [INLINES.ENTRY_HYPERLINK]: { route: Override }
+        [INLINES.ENTRY_HYPERLINK]: { page: Override }
       };
       const actual = RichTextService.entryNodeToJsx(entryHyperlink, {
         ...options,

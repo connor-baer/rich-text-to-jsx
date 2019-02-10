@@ -2,23 +2,29 @@
 
 exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink 1`] = `
 <AssetLink
-  file={
+  fields={
     Object {
-      "contentType": "image/jpg",
-      "details": Object {
-        "image": Object {
-          "height": 500,
-          "width": 800,
+      "file": Object {
+        "contentType": "image/jpg",
+        "details": Object {
+          "image": Object {
+            "height": 500,
+            "width": 800,
+          },
+          "size": 240963,
         },
-        "size": 240963,
+        "fileName": "random-unsplash.jpg",
+        "url": "https://source.unsplash.com/random/800x500",
       },
-      "fileName": "random-unsplash.jpg",
-      "url": "https://source.unsplash.com/random/800x500",
+      "title": "Random photo from Unsplash.com",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Random photo from Unsplash.com"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 >
   ham hock
 </AssetLink>
@@ -26,23 +32,29 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink 1`] = 
 
 exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink override 1`] = `
 <Override
-  file={
+  fields={
     Object {
-      "contentType": "image/jpg",
-      "details": Object {
-        "image": Object {
-          "height": 500,
-          "width": 800,
+      "file": Object {
+        "contentType": "image/jpg",
+        "details": Object {
+          "image": Object {
+            "height": 500,
+            "width": 800,
+          },
+          "size": 240963,
         },
-        "size": 240963,
+        "fileName": "random-unsplash.jpg",
+        "url": "https://source.unsplash.com/random/800x500",
       },
-      "fileName": "random-unsplash.jpg",
-      "url": "https://source.unsplash.com/random/800x500",
+      "title": "Random photo from Unsplash.com",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Random photo from Unsplash.com"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 >
   ham hock
 </Override>
@@ -50,85 +62,109 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink overri
 
 exports[`Rich text to JSX assetNodeToJsx should render an embedded asset override 1`] = `
 <Override
-  file={
+  fields={
     Object {
-      "contentType": "image/jpg",
-      "details": Object {
-        "image": Object {
-          "height": 500,
-          "width": 800,
+      "file": Object {
+        "contentType": "image/jpg",
+        "details": Object {
+          "image": Object {
+            "height": 500,
+            "width": 800,
+          },
+          "size": 240963,
         },
-        "size": 240963,
+        "fileName": "random-unsplash.jpg",
+        "url": "https://source.unsplash.com/random/800x500",
       },
-      "fileName": "random-unsplash.jpg",
-      "url": "https://source.unsplash.com/random/800x500",
+      "title": "Random photo from Unsplash.com",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Random photo from Unsplash.com"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 />
 `;
 
 exports[`Rich text to JSX assetNodeToJsx should render an embedded audio 1`] = `
 <Audio
-  file={
+  fields={
     Object {
-      "contentType": "audio/mp3",
-      "details": Object {
-        "size": 24096,
+      "file": Object {
+        "contentType": "audio/mp3",
+        "details": Object {
+          "size": 24096,
+        },
+        "fileName": "example.mp3",
+        "url": "https://spotify.com/example.mp3",
       },
-      "fileName": "example.mp3",
-      "url": "https://spotify.com/example.mp3",
+      "title": "Example audio from Spotify",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Example audio from Spotify"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 />
 `;
 
 exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
 <Image
-  file={
+  fields={
     Object {
-      "contentType": "image/jpg",
-      "details": Object {
-        "image": Object {
-          "height": 500,
-          "width": 800,
+      "file": Object {
+        "contentType": "image/jpg",
+        "details": Object {
+          "image": Object {
+            "height": 500,
+            "width": 800,
+          },
+          "size": 240963,
         },
-        "size": 240963,
+        "fileName": "random-unsplash.jpg",
+        "url": "https://source.unsplash.com/random/800x500",
       },
-      "fileName": "random-unsplash.jpg",
-      "url": "https://source.unsplash.com/random/800x500",
+      "title": "Random photo from Unsplash.com",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Random photo from Unsplash.com"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 />
 `;
 
 exports[`Rich text to JSX assetNodeToJsx should render an embedded video 1`] = `
 <Video
-  file={
+  fields={
     Object {
-      "contentType": "video/mp4",
-      "details": Object {
-        "size": 2409638,
-        "video": Object {
-          "height": 1080,
-          "width": 1920,
+      "file": Object {
+        "contentType": "video/mp4",
+        "details": Object {
+          "size": 2409638,
+          "video": Object {
+            "height": 1080,
+            "width": 1920,
+          },
         },
+        "fileName": "example.mp4",
+        "url": "https://youtube.com/example.mp4",
       },
-      "fileName": "example.mp4",
-      "url": "https://youtube.com/example.mp4",
+      "title": "Example video from YouTube",
     }
   }
-  id="4fgGUXCJXWOQUAEQqCS8MW"
-  title="Example video from YouTube"
-  updatedAt="2019-01-14T04:57:27.049Z"
+  sys={
+    Object {
+      "id": "4fgGUXCJXWOQUAEQqCS8MW",
+      "updatedAt": "2019-01-14T04:57:27.049Z",
+    }
+  }
 />
 `;
 
@@ -146,30 +182,67 @@ exports[`Rich text to JSX assetNodeToJsx should render an unknown element if the
 
 exports[`Rich text to JSX entryNodeToJsx should render an embedded entry block override 1`] = `
 <Override
-  contentType="page"
-  id="32v7TZ7YQEaugOeew4SymY"
-  slug="about"
-  title="Title: About Acme Corp"
-  updatedAt="2019-01-18T14:37:30.221Z"
+  fields={
+    Object {
+      "slug": "about",
+      "title": "Title: About Acme Corp",
+    }
+  }
+  sys={
+    Object {
+      "contentType": Object {
+        "sys": Object {
+          "id": "page",
+        },
+      },
+      "id": "32v7TZ7YQEaugOeew4SymY",
+      "updatedAt": "2019-01-18T14:37:30.221Z",
+    }
+  }
 />
 `;
 
 exports[`Rich text to JSX entryNodeToJsx should render an embedded entry inline override 1`] = `
 <Override
-  contentType="page"
-  id="32v7TZ7YQEaugOeew4SymY"
-  slug="about"
-  title="Title: About Acme Corp"
-  updatedAt="2019-01-18T14:37:30.221Z"
+  fields={
+    Object {
+      "slug": "about",
+      "title": "Title: About Acme Corp",
+    }
+  }
+  sys={
+    Object {
+      "contentType": Object {
+        "sys": Object {
+          "id": "page",
+        },
+      },
+      "id": "32v7TZ7YQEaugOeew4SymY",
+      "updatedAt": "2019-01-18T14:37:30.221Z",
+    }
+  }
 />
 `;
 
 exports[`Rich text to JSX entryNodeToJsx should render an entry hyperlink override 1`] = `
 <Override
-  contentType="route"
-  id="32v7TZ7YQEaugOeew4SymY"
-  slug="about"
-  updatedAt="2019-01-18T14:37:30.221Z"
+  fields={
+    Object {
+      "slug": "about",
+      "title": "Title: About Acme Corp",
+    }
+  }
+  sys={
+    Object {
+      "contentType": Object {
+        "sys": Object {
+          "id": "page",
+        },
+      },
+      "id": "32v7TZ7YQEaugOeew4SymY",
+      "updatedAt": "2019-01-18T14:37:30.221Z",
+    }
+  }
 >
   This is a link to an entry.
 </Override>
@@ -263,30 +336,48 @@ Array [
     </a>
   </p>,
   <BlockElement
-    contentType="page"
-    id="32v7TZ7YQEaugOeew4SymY"
-    slug="about"
-    title="Title: About Acme Corp"
-    updatedAt="2019-01-18T14:37:30.221Z"
-  />,
-  <Image
-    file={
+    fields={
       Object {
-        "contentType": "image/jpg",
-        "details": Object {
-          "image": Object {
-            "height": 500,
-            "width": 800,
-          },
-          "size": 240963,
-        },
-        "fileName": "random-unsplash.jpg",
-        "url": "https://source.unsplash.com/random/800x500",
+        "slug": "about",
+        "title": "Title: About Acme Corp",
       }
     }
-    id="4fgGUXCJXWOQUAEQqCS8MW"
-    title="Random photo from Unsplash.com"
-    updatedAt="2019-01-14T04:57:27.049Z"
+    sys={
+      Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "page",
+          },
+        },
+        "id": "32v7TZ7YQEaugOeew4SymY",
+        "updatedAt": "2019-01-18T14:37:30.221Z",
+      }
+    }
+  />,
+  <Image
+    fields={
+      Object {
+        "file": Object {
+          "contentType": "image/jpg",
+          "details": Object {
+            "image": Object {
+              "height": 500,
+              "width": 800,
+            },
+            "size": 240963,
+          },
+          "fileName": "random-unsplash.jpg",
+          "url": "https://source.unsplash.com/random/800x500",
+        },
+        "title": "Random photo from Unsplash.com",
+      }
+    }
+    sys={
+      Object {
+        "id": "4fgGUXCJXWOQUAEQqCS8MW",
+        "updatedAt": "2019-01-14T04:57:27.049Z",
+      }
+    }
   />,
 ]
 `;
