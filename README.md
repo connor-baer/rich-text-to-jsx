@@ -2,7 +2,7 @@
 
 # rich-text-to-jsx <!-- omit in TOC -->
 
-JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type
+Opinionated JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type
 
 [![npm version](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx.svg)](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx) [![Build Status](https://travis-ci.org/connor-baer/rich-text-to-jsx.svg?branch=master)](https://travis-ci.org/connor-baer/rich-text-to-jsx) [![codecov](https://codecov.io/gh/connor-baer/rich-text-to-jsx/branch/master/graph/badge.svg)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/master/LICENSE)
 
@@ -28,13 +28,12 @@ JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developer
 
 [`rich-text-to-jsx`](https://www.npmjs.com/package/@madebyconnor/rich-text-to-jsx) is inspired by [`markdown-to-jsx`](https://github.com/probablyup/markdown-to-jsx). Notably, this package offers the following benefits:
 
-- Any HTML tags (corresponding to node types) rendered by the compiler can be overridden to include additional props or even a different React component entirely.
-- Embedded entries and assets can be rendered using different components depending on whether they are inline, blocks or hyperlinks.
-- The rendering function can be customized.
-
+Any HTML tags (corresponding to node types) rendered by the compiler can be [overridden](#optionsoverrides---override-any-nodes-representation) to include additional props or even a different React component entirely.
+Embedded [entries](#entries) and [assets](#assets) can be rendered using different components depending on whether they are inline, blocks or hyperlinks.
+The [rendering function](#optionscreateelement---custom-reactcreateelement-behavior) can be customized.
 All this clocks in at around 4 kB gzipped.
 
-Requires React >= 16.0.0.
+⚠️ Requires React >= 16.0.0. Some features depend on a specific content structure: entry and asset links need to be resolved and the content localized. If this is a deal breaker for you, have a look at the official [`rich-text-react-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer) package.
 
 ## Installation
 
