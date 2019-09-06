@@ -13,16 +13,7 @@ cache:
   directories:
     - 'node_modules'
 
-env:
-  - TARGET_REACT_VERSION=15
-  - TARGET_REACT_VERSION=16
-
 install: yarn --frozen-lockfile
-
-after_install:
-  - yarn remove react react-dom
-  - yarn add react@$(echo $TARGET_REACT_VERSION)
-  - yarn add react-dom@$(echo $TARGET_REACT_VERSION)
 
 jobs:
   include:
