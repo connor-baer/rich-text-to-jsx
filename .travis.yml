@@ -20,7 +20,7 @@ jobs:
     # Run tests in parallel
     - stage: test
       script: yarn test:ci
-    - script: yarn lint
+    - script: yarn lint:ci
       # Upload coverage reports to Codecov
       after_success: yarn codecov -t ${CODECOV_TOKEN}
     - stage: publish

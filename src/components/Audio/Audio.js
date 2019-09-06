@@ -34,6 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
        * The file meta data, including the source URL
        */
       file: PropTypes.shape({
+        contentType: PropTypes.string,
         url: PropTypes.string
       })
     })
