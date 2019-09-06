@@ -17,14 +17,14 @@
     "start": "rollup --config --watch",
     "build": "rollup --config",
     "create:component": "foundry run plop component",
-    "prerelease": "yarn build && yarn size",
-    "release": "semantic-release",
     "lint": "foundry run eslint --fix --quiet \"src/**/*.js\"",
     "lint:ci": "foundry run eslint \"src/**/*.js\"",
     "test": "jest --watch",
-    "test:ci": "jest --coverage --runInBand",
+    "test:ci": "jest --coverage --runInBand --ci",
     "codecov": "codecov",
-    "size": "size-limit"
+    "size": "size-limit",
+    "prerelease": "yarn build && yarn size",
+    "release": "semantic-release"
   },
   "size-limit": [
     {
