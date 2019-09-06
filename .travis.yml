@@ -1,15 +1,17 @@
-cache:
-  yarn: true
-  directories:
-    - 'node_modules'
+sudo: required
+
+dist: trusty
 
 language: node_js
 
 node_js:
-  - '8'
-  - '10'
+  - 10
+  - 12
 
-os: linux
+cache:
+  yarn: true
+  directories:
+    - 'node_modules'
 
 env:
   - TARGET_REACT_VERSION=15
@@ -22,9 +24,20 @@ after_install:
   - yarn add react@$(echo $TARGET_REACT_VERSION)
   - yarn add react-dom@$(echo $TARGET_REACT_VERSION)
 
-script:
-  - yarn test:ci
-  - yarn lint
-  - yarn build
-  - yarn size
-  - yarn codecov
+jobs:
+  include:
+    # Run tests in parallel
+    - stage: test
+      script: yarn test:ci
+    - script: yarn lint
+      # Upload coverage reports to Codecov
+      after_success: yarn codecov -t ${CODECOV_TOKEN}
+    - stage: publish
+      script: skip
+      # Publish package to NPM
+      deploy:
+        provider: script
+        skip_cleanup: true
+        on:
+          all_branches: true
+        script: yarn release
