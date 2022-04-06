@@ -117,7 +117,17 @@ export function textNodeToJsx(node, options, key) {
   const { overrides, createElement } = options;
 
   if (isEmpty(marks)) {
-    return value;
+    const element = getElement('text', overrides);
+
+    if (!element) {
+      return value;
+    }
+
+    const props = getProps('text', overrides, {
+      ...data,
+      key
+    });
+    return createElement(element, props, value);
   }
 
   return marks.reduce((children, mark, markKey) => {

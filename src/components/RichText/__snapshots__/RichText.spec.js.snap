@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RichText styles should allow to override normal text 1`] = `
+<p>
+  <span>
+    This is normal text.
+  </span>
+  <strong>
+    This is bold text.
+  </strong>
+  <em>
+    This is italic text.
+  </em>
+  <u>
+    This is underlined text.
+  </u>
+  <a
+    href="https://acme.com"
+  >
+    <span>
+      This is a hyperlink.
+    </span>
+  </a>
+</p>
+`;
+
 exports[`RichText styles should render with default styles 1`] = `
 Array [
   <h1>
