@@ -34,7 +34,7 @@ describe('BlockElement', () => {
       const actual = create(
         <BlockElement>
           <p>Foo</p>
-        </BlockElement>
+        </BlockElement>,
       );
       expect(actual).toMatchSnapshot();
     });
@@ -60,7 +60,7 @@ describe('BlockElement', () => {
       const actual = create(
         <BlockElement>
           <p>Bar</p>
-        </BlockElement>
+        </BlockElement>,
       );
       expect(actual).toMatchSnapshot();
     });

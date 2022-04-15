@@ -26,7 +26,7 @@ function stringToSegments(path) {
   // Split to an array from dot notation
   return path.split('.').reduce((allSegments, item) => {
     // Split to an array from bracket notation
-    item.split(/\[([^}]+)\]/g).forEach(key => {
+    item.split(/\[([^}]+)\]/g).forEach((key) => {
       // Push to the new array
       if (key.length > 0) {
         allSegments.push(key);

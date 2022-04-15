@@ -2,6 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 
 import { image } from '../../__fixtures__';
+
 import AssetLink from './AssetLink';
 
 describe('AssetLink', () => {

@@ -1,5 +1,4 @@
-const { modules: baseConfig } = require('@sumup/foundry/semantic-release');
-
-const customConfig = { tagFormat: '${version}' };
-
-module.exports = Object.assign({}, baseConfig, customConfig);
+module.exports = require('@sumup/foundry/semantic-release')(
+  { publish: true },
+  { tagFormat: '${version}' },
+);

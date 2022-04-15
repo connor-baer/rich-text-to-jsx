@@ -25,13 +25,13 @@ if (process.env.NODE_ENV !== 'production') {
        * The file meta data, including the source URL
        */
       file: PropTypes.shape({
-        url: PropTypes.string
+        url: PropTypes.string,
       }),
       /**
        * The asset title
        */
-      title: PropTypes.string
-    })
+      title: PropTypes.string,
+    }),
   };
 }
 

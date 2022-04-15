@@ -5,7 +5,6 @@ import { BLOCKS, INLINES, MARKS, helpers } from '@contentful/rich-text-types';
 import cx from './lib/cx';
 import get from './lib/get';
 import isEmpty from './lib/is-empty';
-
 import UnknownElement from './components/UnknownElement';
 import BlockElement from './components/BlockElement';
 import InlineElement from './components/InlineElement';
@@ -16,13 +15,13 @@ import Audio from './components/Audio';
 
 export const defaultOptions = {
   overrides: {},
-  createElement: React.createElement
+  createElement: React.createElement,
 };
 
 const assetElementMap = {
   image: Image,
   video: Video,
-  audio: Audio
+  audio: Audio,
 };
 
 const tagMap = {
@@ -42,18 +41,18 @@ const tagMap = {
   [MARKS.BOLD]: 'strong',
   [MARKS.ITALIC]: 'em',
   [MARKS.UNDERLINE]: 'u',
-  [MARKS.CODE]: 'code'
+  [MARKS.CODE]: 'code',
 };
 
 const entryMap = {
   [BLOCKS.EMBEDDED_ENTRY]: true,
   [INLINES.ENTRY_HYPERLINK]: true,
-  [INLINES.EMBEDDED_ENTRY]: true
+  [INLINES.EMBEDDED_ENTRY]: true,
 };
 
 const assetMap = {
   [BLOCKS.EMBEDDED_ASSET]: true,
-  [INLINES.ASSET_HYPERLINK]: true
+  [INLINES.ASSET_HYPERLINK]: true,
 };
 
 function isEntryNode(node) {
@@ -125,7 +124,7 @@ export function textNodeToJsx(node, options, key) {
 
     const props = getProps('text', overrides, {
       ...data,
-      key
+      key,
     });
     return createElement(element, props, value);
   }
@@ -139,7 +138,7 @@ export function textNodeToJsx(node, options, key) {
 
     const props = getProps(mark.type, overrides, {
       ...data,
-      key: `${key}${markKey}`
+      key: `${key}${markKey}`,
     });
     return createElement(element, props, children);
   }, value);
@@ -162,7 +161,7 @@ export function entryNodeToJsx(node, options, key) {
 
   const props = getProps(nodeType, elementOverrides, {
     ...data.target,
-    key
+    key,
   });
 
   const children = isEmpty(content)
@@ -196,7 +195,7 @@ export function assetNodeToJsx(node, options, key) {
 
   const props = getProps(nodeType, elementOverrides, {
     ...data.target,
-    key
+    key,
   });
 
   const children = isEmpty(content)
@@ -243,7 +242,7 @@ export function getProps(type, overrides, data = {}) {
   return {
     ...overrideProps,
     ...data,
-    className: cx(data.className, overrideProps.className)
+    className: cx(data.className, overrideProps.className),
   };
 }
 

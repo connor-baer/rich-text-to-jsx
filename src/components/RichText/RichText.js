@@ -29,7 +29,7 @@ if (process.env.NODE_ENV !== 'production') {
      * A function create and return a new React element.
      * Defaults to React.createElement()
      */
-    createElement: PropTypes.func
+    createElement: PropTypes.func,
   };
 }
 
