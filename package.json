@@ -11,7 +11,7 @@
     "dist"
   ],
   "repository": "https://github.com/connor-baer/rich-text-to-jsx.git",
-  "author": "(Connor Bär <code@connorbaer.co>)",
+  "author": "(Connor Bär <oss@connorbaer.com>)",
   "license": "MIT",
   "scripts": {
     "start": "rollup --config --watch",
