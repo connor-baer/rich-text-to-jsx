@@ -8,13 +8,12 @@ import {
   paragraph,
   unorderedList,
   blockquote,
-  hr
+  hr,
 } from '../../__fixtures__';
 
 import RichText from './RichText';
 
 describe('RichText', () => {
-  // !TODO: write your tests.
   describe('styles', () => {
     it('should render with default styles', () => {
       const richText = createDocument([
@@ -22,20 +21,18 @@ describe('RichText', () => {
         paragraph,
         unorderedList,
         hr,
-        blockquote
+        blockquote,
       ]);
       const actual = create(<RichText richText={richText} />);
       expect(actual).toMatchSnapshot();
     });
-  });
 
-  describe('styles', () => {
     it('should allow to override normal text', () => {
       const Text = ({ children, ...props }) => (
         <span {...props}>{children}</span>
       );
       Text.propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
       };
 
       const richText = createDocument([paragraph]);
@@ -44,10 +41,10 @@ describe('RichText', () => {
           richText={richText}
           overrides={{
             text: {
-              component: Text
-            }
+              component: Text,
+            },
           }}
-        />
+        />,
       );
       expect(actual).toMatchSnapshot();
     });

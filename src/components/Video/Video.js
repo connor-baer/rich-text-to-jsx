@@ -35,9 +35,9 @@ if (process.env.NODE_ENV !== 'production') {
        */
       file: PropTypes.shape({
         contentType: PropTypes.string,
-        url: PropTypes.string
-      })
-    })
+        url: PropTypes.string,
+      }),
+    }),
   };
 }
 

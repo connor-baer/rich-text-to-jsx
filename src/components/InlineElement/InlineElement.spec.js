@@ -34,7 +34,7 @@ describe('InlineElement', () => {
       const actual = create(
         <InlineElement>
           <p>Foo</p>
-        </InlineElement>
+        </InlineElement>,
       );
       expect(actual).toMatchSnapshot();
     });
@@ -60,7 +60,7 @@ describe('InlineElement', () => {
       const actual = create(
         <InlineElement>
           <p>Bar</p>
-        </InlineElement>
+        </InlineElement>,
       );
       expect(actual).toMatchSnapshot();
     });

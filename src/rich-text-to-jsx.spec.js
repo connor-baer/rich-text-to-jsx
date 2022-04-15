@@ -16,7 +16,7 @@ import {
   embeddedEntryBlock,
   embeddedEntryInline,
   entryHyperlink,
-  assetHyperlink
+  assetHyperlink,
 } from './__fixtures__';
 
 describe('Rich text to JSX', () => {
@@ -28,7 +28,7 @@ describe('Rich text to JSX', () => {
       const richText = createDocument([
         paragraph,
         embeddedEntryBlock,
-        embeddedImage
+        embeddedImage,
       ]);
       const actual = richTextToJsx(richText);
       expect(actual).toMatchSnapshot();
@@ -86,33 +86,33 @@ describe('Rich text to JSX', () => {
   describe('entryNodeToJsx', () => {
     it('should render an embedded entry block override', () => {
       const overrides = {
-        [BLOCKS.EMBEDDED_ENTRY]: { page: Override }
+        [BLOCKS.EMBEDDED_ENTRY]: { page: Override },
       };
       const actual = RichTextService.entryNodeToJsx(embeddedEntryBlock, {
         ...options,
-        overrides
+        overrides,
       });
       expect(actual).toMatchSnapshot();
     });
 
     it('should render an embedded entry inline override', () => {
       const overrides = {
-        [INLINES.EMBEDDED_ENTRY]: { page: Override }
+        [INLINES.EMBEDDED_ENTRY]: { page: Override },
       };
       const actual = RichTextService.entryNodeToJsx(embeddedEntryInline, {
         ...options,
-        overrides
+        overrides,
       });
       expect(actual).toMatchSnapshot();
     });
 
     it('should render an entry hyperlink override', () => {
       const overrides = {
-        [INLINES.ENTRY_HYPERLINK]: { page: Override }
+        [INLINES.ENTRY_HYPERLINK]: { page: Override },
       };
       const actual = RichTextService.entryNodeToJsx(entryHyperlink, {
         ...options,
-        overrides
+        overrides,
       });
       expect(actual).toMatchSnapshot();
     });
@@ -141,11 +141,11 @@ describe('Rich text to JSX', () => {
 
     it('should render an embedded asset override', () => {
       const overrides = {
-        [BLOCKS.EMBEDDED_ASSET]: { image: Override }
+        [BLOCKS.EMBEDDED_ASSET]: { image: Override },
       };
       const actual = RichTextService.assetNodeToJsx(embeddedImage, {
         ...options,
-        overrides
+        overrides,
       });
       expect(actual).toMatchSnapshot();
     });
@@ -157,11 +157,11 @@ describe('Rich text to JSX', () => {
 
     it('should render an asset hyperlink override', () => {
       const overrides = {
-        [INLINES.ASSET_HYPERLINK]: { image: Override }
+        [INLINES.ASSET_HYPERLINK]: { image: Override },
       };
       const actual = RichTextService.assetNodeToJsx(assetHyperlink, {
         ...options,
-        overrides
+        overrides,
       });
       expect(actual).toMatchSnapshot();
     });
@@ -178,12 +178,12 @@ describe('Rich text to JSX', () => {
           data: {
             target: {
               file: {
-                contentType: 'spreadsheet'
-              }
-            }
-          }
+                contentType: 'spreadsheet',
+              },
+            },
+          },
         },
-        options
+        options,
       );
       expect(actual).toMatchSnapshot();
     });

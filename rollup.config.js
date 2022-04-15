@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import external from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
@@ -8,7 +8,7 @@ import pkg from './package.json';
 
 const globals = {
   'prop-types': 'PropTypes',
-  react: 'React'
+  'react': 'React',
 };
 
 const config = {
@@ -19,27 +19,27 @@ const config = {
       format: 'umd',
       name: 'richTextToJsx',
       exports: 'named',
-      globals
+      globals,
     },
     {
       file: pkg.main,
       format: 'cjs',
       exports: 'named',
-      globals
+      globals,
     },
     {
       file: pkg.module,
-      format: 'es'
-    }
+      format: 'es',
+    },
   ],
   external: ['react', 'react-dom', 'prop-types'],
   plugins: [
-    peerDepsExternal(),
+    external(),
     babel({ exclude: 'node_modules/**' }),
     resolve(),
     commonjs(),
-    filesize()
-  ]
+    filesize(),
+  ],
 };
 
 export default config;

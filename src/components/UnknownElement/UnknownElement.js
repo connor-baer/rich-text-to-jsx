@@ -7,7 +7,7 @@ import React, { Fragment } from 'react';
 function UnknownElement(props) {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
-    console.debug(`Node type is undefined`, props);
+    console.debug('Node type is undefined', props);
 
     return (
       <Fragment>
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
     /**
      * The element children.
      */
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array])
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   };
 }
 

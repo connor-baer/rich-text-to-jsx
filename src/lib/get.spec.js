@@ -6,10 +6,10 @@ describe('get', () => {
       bar: 1,
       baz: [
         {
-          fizz: 'buzz'
-        }
-      ]
-    }
+          fizz: 'buzz',
+        },
+      ],
+    },
   };
 
   it('should accept the path as an array', () => {

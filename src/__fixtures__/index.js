@@ -5,7 +5,7 @@ export function createDocument(content) {
   return {
     data: {},
     nodeType: 'document',
-    content
+    content,
   };
 }
 
@@ -16,10 +16,10 @@ export const headingOne = {
       data: {},
       marks: [],
       value: 'This is a first-level heading',
-      nodeType: 'text'
-    }
+      nodeType: 'text',
+    },
   ],
-  nodeType: BLOCKS.HEADING_1
+  nodeType: BLOCKS.HEADING_1,
 };
 
 export const headingThree = {
@@ -29,123 +29,123 @@ export const headingThree = {
       data: {},
       marks: [],
       value: 'This is a third-level heading',
-      nodeType: 'text'
-    }
+      nodeType: 'text',
+    },
   ],
-  nodeType: BLOCKS.HEADING_3
+  nodeType: BLOCKS.HEADING_3,
 };
 
 export const text = {
   data: {},
   marks: [],
   value: 'This is normal text.',
-  nodeType: 'text'
+  nodeType: 'text',
 };
 
 export const bold = {
   data: {},
   marks: [
     {
-      type: MARKS.BOLD
-    }
+      type: MARKS.BOLD,
+    },
   ],
   value: 'This is bold text.',
-  nodeType: 'text'
+  nodeType: 'text',
 };
 
 export const italic = {
   data: {},
   marks: [
     {
-      type: MARKS.ITALIC
-    }
+      type: MARKS.ITALIC,
+    },
   ],
   value: 'This is italic text.',
-  nodeType: 'text'
+  nodeType: 'text',
 };
 
 export const underline = {
   data: {},
   marks: [
     {
-      type: MARKS.UNDERLINE
-    }
+      type: MARKS.UNDERLINE,
+    },
   ],
   value: 'This is underlined text.',
-  nodeType: 'text'
+  nodeType: 'text',
 };
 
 export const hyperlink = {
   data: {
-    uri: 'https://acme.com'
+    uri: 'https://acme.com',
   },
   content: [
     {
       data: {},
       marks: [],
       value: 'This is a hyperlink.',
-      nodeType: 'text'
-    }
+      nodeType: 'text',
+    },
   ],
-  nodeType: INLINES.HYPERLINK
+  nodeType: INLINES.HYPERLINK,
 };
 
 export const boldAndItalic = {
   data: {},
   marks: [
     {
-      type: MARKS.BOLD
+      type: MARKS.BOLD,
     },
     {
-      type: MARKS.ITALIC
-    }
+      type: MARKS.ITALIC,
+    },
   ],
   value: 'This is bold and italic text.',
-  nodeType: 'text'
+  nodeType: 'text',
 };
 
 export const paragraph = {
   data: {},
   content: [text, bold, italic, underline, hyperlink],
-  nodeType: BLOCKS.PARAGRAPH
+  nodeType: BLOCKS.PARAGRAPH,
 };
 
 export const blockquote = {
   data: {},
   content: [paragraph],
-  nodeType: BLOCKS.QUOTE
+  nodeType: BLOCKS.QUOTE,
 };
 
 export const listItem = {
   data: {},
   content: [paragraph],
-  nodeType: BLOCKS.LIST_ITEM
+  nodeType: BLOCKS.LIST_ITEM,
 };
 
 export const unorderedList = {
   data: {},
   content: [listItem, listItem, listItem],
-  nodeType: BLOCKS.UL_LIST
+  nodeType: BLOCKS.UL_LIST,
 };
 
 export const hr = {
   data: {},
   content: [],
-  nodeType: BLOCKS.HR
+  nodeType: BLOCKS.HR,
 };
 
 export const assetLink = {
   sys: {
     id: '9mpxT4zsRi6Iwukey8KeM',
     link: 'Link',
-    type: 'Asset'
-  }
+    type: 'Asset',
+  },
 };
 
 export const image = {
   sys: {
     id: '4fgGUXCJXWOQUAEQqCS8MW',
-    updatedAt: '2019-01-14T04:57:27.049Z'
+    updatedAt: '2019-01-14T04:57:27.049Z',
   },
   fields: {
     title: 'Random photo from Unsplash.com',
@@ -155,19 +155,19 @@ export const image = {
         size: 240963,
         image: {
           width: 800,
-          height: 500
-        }
+          height: 500,
+        },
       },
       fileName: 'random-unsplash.jpg',
-      contentType: 'image/jpg'
-    }
-  }
+      contentType: 'image/jpg',
+    },
+  },
 };
 
 export const video = {
   sys: {
     id: '4fgGUXCJXWOQUAEQqCS8MW',
-    updatedAt: '2019-01-14T04:57:27.049Z'
+    updatedAt: '2019-01-14T04:57:27.049Z',
   },
   fields: {
     title: 'Example video from YouTube',
@@ -177,119 +177,119 @@ export const video = {
         size: 2409638,
         video: {
           width: 1920,
-          height: 1080
-        }
+          height: 1080,
+        },
       },
       fileName: 'example.mp4',
-      contentType: 'video/mp4'
-    }
-  }
+      contentType: 'video/mp4',
+    },
+  },
 };
 
 export const audio = {
   sys: {
     id: '4fgGUXCJXWOQUAEQqCS8MW',
-    updatedAt: '2019-01-14T04:57:27.049Z'
+    updatedAt: '2019-01-14T04:57:27.049Z',
   },
   fields: {
     title: 'Example audio from Spotify',
     file: {
       url: 'https://spotify.com/example.mp3',
       details: {
-        size: 24096
+        size: 24096,
       },
       fileName: 'example.mp3',
-      contentType: 'audio/mp3'
-    }
-  }
+      contentType: 'audio/mp3',
+    },
+  },
 };
 
 export const embeddedImage = {
   data: {
-    target: image
+    target: image,
   },
   content: [],
-  nodeType: BLOCKS.EMBEDDED_ASSET
+  nodeType: BLOCKS.EMBEDDED_ASSET,
 };
 
 export const embeddedVideo = {
   data: {
-    target: video
+    target: video,
   },
   content: [],
-  nodeType: BLOCKS.EMBEDDED_ASSET
+  nodeType: BLOCKS.EMBEDDED_ASSET,
 };
 
 export const embeddedAudio = {
   data: {
-    target: audio
+    target: audio,
   },
   content: [],
-  nodeType: BLOCKS.EMBEDDED_ASSET
+  nodeType: BLOCKS.EMBEDDED_ASSET,
 };
 
 export const assetHyperlink = {
   data: {
-    target: image
+    target: image,
   },
   content: [
     {
       data: {},
       marks: [],
       value: 'ham hock',
-      nodeType: 'text'
-    }
+      nodeType: 'text',
+    },
   ],
-  nodeType: INLINES.ASSET_HYPERLINK
+  nodeType: INLINES.ASSET_HYPERLINK,
 };
 
 export const entryLink = {
   sys: {
     id: '9mpxT4zsRi6Iwukey8KeM',
     link: 'Link',
-    linkType: 'Entry'
-  }
+    linkType: 'Entry',
+  },
 };
 
 const entry = {
   sys: {
     id: '32v7TZ7YQEaugOeew4SymY',
     contentType: { sys: { id: 'page' } },
-    updatedAt: '2019-01-18T14:37:30.221Z'
+    updatedAt: '2019-01-18T14:37:30.221Z',
   },
   fields: {
     slug: 'about',
-    title: 'Title: About Acme Corp'
-  }
+    title: 'Title: About Acme Corp',
+  },
 };
 
 export const entryHyperlink = {
   data: {
-    target: entry
+    target: entry,
   },
   content: [
     {
       data: {},
       marks: [],
       value: 'This is a link to an entry.',
-      nodeType: 'text'
-    }
+      nodeType: 'text',
+    },
   ],
-  nodeType: INLINES.ENTRY_HYPERLINK
+  nodeType: INLINES.ENTRY_HYPERLINK,
 };
 
 export const embeddedEntryInline = {
   data: {
-    target: entry
+    target: entry,
   },
   content: [],
-  nodeType: INLINES.EMBEDDED_ENTRY
+  nodeType: INLINES.EMBEDDED_ENTRY,
 };
 
 export const embeddedEntryBlock = {
   data: {
-    target: entry
+    target: entry,
   },
   content: [],
-  nodeType: BLOCKS.EMBEDDED_ENTRY
+  nodeType: BLOCKS.EMBEDDED_ENTRY,
 };

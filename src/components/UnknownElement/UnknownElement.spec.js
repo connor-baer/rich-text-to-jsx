@@ -34,7 +34,7 @@ describe('UnknownElement', () => {
       const actual = create(
         <UnknownElement>
           <p>Foo</p>
-        </UnknownElement>
+        </UnknownElement>,
       );
       expect(actual).toMatchSnapshot();
     });
@@ -60,7 +60,7 @@ describe('UnknownElement', () => {
       const actual = create(
         <UnknownElement>
           <p>Bar</p>
-        </UnknownElement>
+        </UnknownElement>,
       );
       expect(actual).toMatchSnapshot();
     });

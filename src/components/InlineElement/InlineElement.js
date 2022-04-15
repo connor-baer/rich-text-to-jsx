@@ -7,7 +7,7 @@ import React, { Fragment } from 'react';
 function InlineElement(props) {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
-    console.debug(`Unknown inline node type`, props);
+    console.debug('Unknown inline node type', props);
     return (
       <Fragment>
         <span style={{ color: 'white', backgroundColor: 'red' }}>
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
     /**
      * The element children.
      */
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array])
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   };
 }
 
