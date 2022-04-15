@@ -1,10 +1,19 @@
 import React, { Fragment } from 'react';
 
+export interface BlockElementProps {
+  /**
+   * The element children.
+   */
+  children?: JSX.Element;
+}
+
 /**
  * Default fallback element for block level nodes.
  * Renders a prominent warning in development.
  */
-function BlockElement(props) {
+export default function BlockElement(
+  props: BlockElementProps,
+): JSX.Element | null {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.debug('Unknown block  node type', props);
@@ -19,20 +28,3 @@ function BlockElement(props) {
   }
   return props.children || null;
 }
-
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  const PropTypes = require('prop-types');
-
-  BlockElement.propTypes = {
-    /**
-     * The element children.
-     */
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-  };
-}
-
-/**
- * @component
- */
-export default BlockElement;

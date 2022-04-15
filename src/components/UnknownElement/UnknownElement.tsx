@@ -1,10 +1,19 @@
 import React, { Fragment } from 'react';
 
+export interface UnknownElementProps {
+  /**
+   * The element children.
+   */
+  children?: JSX.Element;
+}
+
 /**
  * Default element when the node type is unknown.
  * Renders a prominent warning in development.
  */
-function UnknownElement(props) {
+export default function UnknownElement(
+  props: UnknownElementProps,
+): JSX.Element | null {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.debug('Node type is undefined', props);
@@ -21,20 +30,3 @@ function UnknownElement(props) {
 
   return props.children || null;
 }
-
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  const PropTypes = require('prop-types');
-
-  UnknownElement.propTypes = {
-    /**
-     * The element children.
-     */
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-  };
-}
-
-/**
- * @component
- */
-export default UnknownElement;

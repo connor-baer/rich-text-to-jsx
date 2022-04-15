@@ -1,10 +1,22 @@
 import React from 'react';
 
+export interface VideoProps {
+  fields: {
+    /**
+     * The file meta data, including the source URL
+     */
+    file: {
+      contentType: string;
+      url: string;
+    };
+  };
+}
+
 /**
  * Default element for videos.
  * Renders a responsive video player.
  */
-function Video({ fields }) {
+export default function Video({ fields }: VideoProps): JSX.Element {
   const { file } = fields;
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
@@ -23,25 +35,3 @@ function Video({ fields }) {
     </video>
   );
 }
-
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  const PropTypes = require('prop-types');
-
-  Video.propTypes = {
-    fields: PropTypes.shape({
-      /**
-       * The file meta data, including the source URL
-       */
-      file: PropTypes.shape({
-        contentType: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    }),
-  };
-}
-
-/**
- * @component
- */
-export default Video;

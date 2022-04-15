@@ -1,10 +1,21 @@
 import React from 'react';
 
+export interface AudioProps {
+  fields: {
+    /**
+     * The file meta data, including the source URL
+     */
+    file: {
+      contentType: string;
+      url: string;
+    };
+  };
+}
 /**
  * Default element for audio files.
  * Renders a responsive audio player.
  */
-function Audio({ fields }) {
+export default function Audio({ fields }: AudioProps): JSX.Element {
   const { file } = fields;
   /* eslint-disable jsx-a11y/media-has-caption */
   return (
@@ -23,25 +34,3 @@ function Audio({ fields }) {
     </audio>
   );
 }
-
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  const PropTypes = require('prop-types');
-
-  Audio.propTypes = {
-    fields: PropTypes.shape({
-      /**
-       * The file meta data, including the source URL
-       */
-      file: PropTypes.shape({
-        contentType: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    }),
-  };
-}
-
-/**
- * @component
- */
-export default Audio;

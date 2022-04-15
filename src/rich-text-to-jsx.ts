@@ -1,6 +1,16 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import { BLOCKS, INLINES, MARKS, helpers } from '@contentful/rich-text-types';
+import {
+  BLOCKS,
+  INLINES,
+  MARKS,
+  helpers,
+  Document,
+  Node,
+  Text,
+  Block,
+  Inline,
+} from '@contentful/rich-text-types';
 
 import cx from './lib/cx';
 import get from './lib/get';
@@ -12,8 +22,10 @@ import AssetLink from './components/AssetLink';
 import Image from './components/Image';
 import Video from './components/Video';
 import Audio from './components/Audio';
+import { NodeType, Options, Override, Overrides } from './types';
+import { isFunction } from './lib/type-checks';
 
-export const defaultOptions = {
+export const defaultOptions: Options = {
   overrides: {},
   createElement: React.createElement,
 };
@@ -24,7 +36,7 @@ const assetElementMap = {
   audio: Audio,
 };
 
-const tagMap = {
+const tagMap: Partial<Record<NodeType, string>> = {
   [BLOCKS.HEADING_1]: 'h1',
   [BLOCKS.HEADING_2]: 'h2',
   [BLOCKS.HEADING_3]: 'h3',
@@ -44,43 +56,48 @@ const tagMap = {
   [MARKS.CODE]: 'code',
 };
 
-const entryMap = {
+const entryMap: Partial<Record<NodeType, boolean>> = {
   [BLOCKS.EMBEDDED_ENTRY]: true,
   [INLINES.ENTRY_HYPERLINK]: true,
   [INLINES.EMBEDDED_ENTRY]: true,
 };
 
-const assetMap = {
+const assetMap: Partial<Record<NodeType, boolean>> = {
   [BLOCKS.EMBEDDED_ASSET]: true,
   [INLINES.ASSET_HYPERLINK]: true,
 };
 
-function isEntryNode(node) {
-  return entryMap[node.nodeType];
+function isEntryNode(node: Node): node is Block | Inline {
+  return !!entryMap[node.nodeType];
 }
 
-function isAssetNode(node) {
-  return assetMap[node.nodeType];
+function isAssetNode(node: Node): node is Block | Inline {
+  return !!assetMap[node.nodeType];
 }
 
-export default function richTextToJsx(richText, options = {}) {
+export default function richTextToJsx(
+  richText: Document,
+  options: Partial<Options> = {},
+) {
   if (!richText) {
     return null;
   }
   return nodeListToJsx(richText.content, { ...defaultOptions, ...options });
 }
 
-export function nodeListToJsx(nodes, options) {
+export function nodeListToJsx(nodes: Node[], options: Options) {
   if (isEmpty(nodes)) {
     return null;
   }
   return nodes.map((node, key) => nodeToJsx(node, options, key));
 }
 
-export function nodeToJsx(node = {}, options = {}, key) {
-  const { nodeType } = node;
-
-  if (!nodeType) {
+export function nodeToJsx(
+  node: Node,
+  options: Options,
+  key: number,
+): JSX.Element | string {
+  if (!node || node.nodeType) {
     return unknownNodeToJsx(node, options, key);
   }
 
@@ -99,7 +116,7 @@ export function nodeToJsx(node = {}, options = {}, key) {
   return parentNodeToJsx(node, options, key);
 }
 
-export function unknownNodeToJsx(node, options, key) {
+export function unknownNodeToJsx(node: Node, options: Options, key: number) {
   const { data, content } = node;
   const { createElement } = options;
   const props = { ...data.target, key };
@@ -111,7 +128,11 @@ export function unknownNodeToJsx(node, options, key) {
   return createElement(UnknownElement, props, children);
 }
 
-export function textNodeToJsx(node, options, key) {
+export function textNodeToJsx(
+  node: Text,
+  options: Options,
+  key: number,
+): JSX.Element | string {
   const { data = {}, value, marks } = node;
   const { overrides, createElement } = options;
 
@@ -129,7 +150,7 @@ export function textNodeToJsx(node, options, key) {
     return createElement(element, props, value);
   }
 
-  return marks.reduce((children, mark, markKey) => {
+  return marks.reduce<JSX.Element | string>((children, mark, markKey) => {
     const element = getElement(mark.type, overrides);
 
     if (!element) {
@@ -144,7 +165,11 @@ export function textNodeToJsx(node, options, key) {
   }, value);
 }
 
-export function entryNodeToJsx(node, options, key) {
+export function entryNodeToJsx(
+  node: Block | Inline,
+  options: Options,
+  key: number,
+) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
@@ -171,7 +196,11 @@ export function entryNodeToJsx(node, options, key) {
   return createElement(element, props, children);
 }
 
-export function assetNodeToJsx(node, options, key) {
+export function assetNodeToJsx(
+  node: Block | Inline,
+  options: Options,
+  key: number,
+) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
@@ -205,7 +234,7 @@ export function assetNodeToJsx(node, options, key) {
   return createElement(element, props, children);
 }
 
-export function parentNodeToJsx(node, options, key) {
+export function parentNodeToJsx(node: Node, options: Options, key: number) {
   const { data, content, nodeType } = node;
   const { overrides, createElement } = options;
 
@@ -221,20 +250,20 @@ export function parentNodeToJsx(node, options, key) {
   return createElement(element, props, children);
 }
 
-export function getElement(type, overrides) {
+export function getElement(type: string, overrides: Overrides) {
   const override = getOverride(type, overrides);
 
   if (override) {
-    return typeof override === 'function' ? override : override.component;
+    return isFunction(override) ? override : override.component;
   }
 
   return tagMap[type];
 }
 
-export function getProps(type, overrides, data = {}) {
+export function getProps(type: string, overrides: Overrides, data = {}) {
   const override = getOverride(type, overrides);
 
-  if (isEmpty(override) || typeof override === 'function') {
+  if (isEmpty(override) || isFunction(override)) {
     return data;
   }
 
@@ -246,8 +275,11 @@ export function getProps(type, overrides, data = {}) {
   };
 }
 
-export function getOverride(type, overrides = {}) {
+export function getOverride(
+  type: string,
+  overrides: Overrides = {},
+): Override | undefined {
   const tag = tagMap[type];
 
-  return overrides[tag] || overrides[type];
+  return (tag && overrides[tag]) || overrides[type];
 }
