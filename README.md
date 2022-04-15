@@ -4,7 +4,7 @@
 
 Opinionated JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type
 
-[![npm version](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx.svg)](https://badge.fury.io/js/%40madebyconnor%2Frich-text-to-jsx) [![CircleCI](https://circleci.com/gh/connor-baer/rich-text-to-jsx.svg?style=svg)](https://circleci.com/gh/connor-baer/rich-text-to-jsx) [![codecov](https://codecov.io/gh/connor-baer/rich-text-to-jsx/branch/master/graph/badge.svg)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/@madebyconnor/rich-text-to-jsx)](https://www.npmjs.com/package/@madebyconnor/rich-text-to-jsx) [![Continuous Integration](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yml/badge.svg)](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yml)  [![Code coverage](https://img.shields.io/codecov/c/github/connor-baer/rich-text-to-jsx)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/main/LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 </div>
 
