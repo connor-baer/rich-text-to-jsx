@@ -52,7 +52,7 @@
     "react-dom": "^18.0.0",
     "react-test-renderer": "^18.0.0",
     "regenerator-runtime": "^0.13.1",
-    "rollup": "^1.1.1",
+    "rollup": "^2.70.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.1.2",
