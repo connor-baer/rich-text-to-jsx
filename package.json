@@ -64,6 +64,6 @@
     "react": ">= 16.0.0"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.12.0"
+    "@contentful/rich-text-types": "^15.12.1"
   }
 }
