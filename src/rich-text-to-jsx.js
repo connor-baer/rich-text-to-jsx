@@ -77,6 +77,7 @@ export function nodeListToJsx(nodes, options) {
   return nodes.map((node, key) => nodeToJsx(node, options, key));
 }
 
+// eslint-disable-next-line default-param-last
 export function nodeToJsx(node = {}, options = {}, key) {
   const { nodeType } = node;
 
