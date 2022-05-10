@@ -1,3 +1,1 @@
-module.exports = require('@sumup/foundry/lint-staged')({
-  language: 'JavaScript',
-});
+module.exports = require('@sumup/foundry/lint-staged')();

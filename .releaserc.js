@@ -1,4 +1,3 @@
-module.exports = require('@sumup/foundry/semantic-release')(
-  { publish: true },
-  { tagFormat: '${version}' },
-);
+module.exports = require('@sumup/foundry/semantic-release')({
+  tagFormat: '${version}',
+});
