@@ -47,7 +47,7 @@
     "@sumup/foundry": "^5.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^28.1.1",
-    "jest": "^28.1.1",
+    "jest": "^28.1.2",
     "jest-junit": "^14.0.0",
     "jest-serializer-html": "^7.1.0",
     "prop-types": "^15.6.2",
