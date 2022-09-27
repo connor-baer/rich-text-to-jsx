@@ -4,7 +4,7 @@
 
 Opinionated JSX renderer for the [Contentful Rich Text](https://www.contentful.com/developers/docs/concepts/rich-text/) field type
 
-[![NPM version](https://img.shields.io/npm/v/@madebyconnor/rich-text-to-jsx)](https://www.npmjs.com/package/@madebyconnor/rich-text-to-jsx) [![Continuous Integration](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yml/badge.svg)](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yml)  [![Code coverage](https://img.shields.io/codecov/c/github/connor-baer/rich-text-to-jsx)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/main/LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![NPM version](https://img.shields.io/npm/v/@madebyconnor/rich-text-to-jsx)](https://www.npmjs.com/package/@madebyconnor/rich-text-to-jsx) [![Continuous Integration](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yaml/badge.svg)](https://github.com/connor-baer/rich-text-to-jsx/actions/workflows/ci.yaml) [![Code coverage](https://img.shields.io/codecov/c/github/connor-baer/rich-text-to-jsx)](https://codecov.io/gh/connor-baer/rich-text-to-jsx) [![License MIT](https://img.shields.io/github/license/connor-baer/rich-text-to-jsx.svg)](https://github.com/connor-baer/rich-text-to-jsx/blob/main/LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 </div>
 
@@ -65,13 +65,13 @@ const richText = {
           data: {},
           marks: [],
           value: 'Hello world!',
-          nodeType: 'text'
-        }
+          nodeType: 'text',
+        },
       ],
-      nodeType: 'paragraph'
-    }
+      nodeType: 'paragraph',
+    },
   ],
-  nodeType: 'document'
+  nodeType: 'document',
 };
 
 render(<RichText richText={richText} />, document.body);
@@ -128,13 +128,13 @@ If you only wish to provide a component override, a simplified syntax is availab
 
 ```js
 const overrides = {
-  [BLOCKS.PARAGRAPH]: MyParagraph
+  [BLOCKS.PARAGRAPH]: MyParagraph,
 };
 
 // or by HTML tag
 
 const overrides = {
-  p: MyParagraph
+  p: MyParagraph,
 };
 ```
 
@@ -157,16 +157,16 @@ const PagePreview = ({ title, summary, className }) => (
 
 const overrides = {
   [INLINES.ENTRY_HYPERLINK]: {
-    page: PageLink
+    page: PageLink,
   },
   [BLOCKS.EMBEDDED_ENTRY]: {
     page: {
       component: PagePreview,
       props: {
-        className: 'page-preview'
-      }
-    }
-  }
+        className: 'page-preview',
+      },
+    },
+  },
 };
 ```
 
@@ -186,16 +186,16 @@ const Image = ({ file, title, className }) => (
 
 const overrides = {
   [INLINES.ENTRY_HYPERLINK]: {
-    image: ImageLink
+    image: ImageLink,
   },
   [BLOCKS.EMBEDDED_ENTRY]: {
     image: {
       component: Image,
       props: {
-        className: 'image--fullwidth'
-      }
-    }
-  }
+        className: 'image--fullwidth',
+      },
+    },
+  },
 };
 ```
 
