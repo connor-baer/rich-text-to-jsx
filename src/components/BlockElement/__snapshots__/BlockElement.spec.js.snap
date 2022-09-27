@@ -3,7 +3,7 @@
 exports[`BlockElement in development should render a warning 1`] = `
 <span
   style={
-    Object {
+    {
       "backgroundColor": "red",
       "color": "white",
     }
@@ -14,10 +14,10 @@ exports[`BlockElement in development should render a warning 1`] = `
 `;
 
 exports[`BlockElement in development should render a warning and the children 1`] = `
-Array [
+[
   <span
     style={
-      Object {
+      {
         "backgroundColor": "red",
         "color": "white",
       }

@@ -3,11 +3,11 @@
 exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink 1`] = `
 <AssetLink
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "image/jpg",
-        "details": Object {
-          "image": Object {
+        "details": {
+          "image": {
             "height": 500,
             "width": 800,
           },
@@ -20,7 +20,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink 1`] = 
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -33,11 +33,11 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink 1`] = 
 exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink override 1`] = `
 <Override
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "image/jpg",
-        "details": Object {
-          "image": Object {
+        "details": {
+          "image": {
             "height": 500,
             "width": 800,
           },
@@ -50,7 +50,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink overri
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -63,11 +63,11 @@ exports[`Rich text to JSX assetNodeToJsx should render an asset hyperlink overri
 exports[`Rich text to JSX assetNodeToJsx should render an embedded asset override 1`] = `
 <Override
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "image/jpg",
-        "details": Object {
-          "image": Object {
+        "details": {
+          "image": {
             "height": 500,
             "width": 800,
           },
@@ -80,7 +80,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded asset overrid
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -91,10 +91,10 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded asset overrid
 exports[`Rich text to JSX assetNodeToJsx should render an embedded audio 1`] = `
 <Audio
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "audio/mp3",
-        "details": Object {
+        "details": {
           "size": 24096,
         },
         "fileName": "example.mp3",
@@ -104,7 +104,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded audio 1`] = `
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -115,11 +115,11 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded audio 1`] = `
 exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
 <Image
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "image/jpg",
-        "details": Object {
-          "image": Object {
+        "details": {
+          "image": {
             "height": 500,
             "width": 800,
           },
@@ -132,7 +132,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -143,12 +143,12 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded image 1`] = `
 exports[`Rich text to JSX assetNodeToJsx should render an embedded video 1`] = `
 <Video
   fields={
-    Object {
-      "file": Object {
+    {
+      "file": {
         "contentType": "video/mp4",
-        "details": Object {
+        "details": {
           "size": 2409638,
-          "video": Object {
+          "video": {
             "height": 1080,
             "width": 1920,
           },
@@ -160,7 +160,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an embedded video 1`] = `
     }
   }
   sys={
-    Object {
+    {
       "id": "4fgGUXCJXWOQUAEQqCS8MW",
       "updatedAt": "2019-01-14T04:57:27.049Z",
     }
@@ -173,7 +173,7 @@ exports[`Rich text to JSX assetNodeToJsx should render an unknown element if the
 exports[`Rich text to JSX assetNodeToJsx should render an unknown element if there is no component for the mime type 1`] = `
 <UnknownElement
   file={
-    Object {
+    {
       "contentType": "spreadsheet",
     }
   }
@@ -183,15 +183,15 @@ exports[`Rich text to JSX assetNodeToJsx should render an unknown element if the
 exports[`Rich text to JSX entryNodeToJsx should render an embedded entry block override 1`] = `
 <Override
   fields={
-    Object {
+    {
       "slug": "about",
       "title": "Title: About Acme Corp",
     }
   }
   sys={
-    Object {
-      "contentType": Object {
-        "sys": Object {
+    {
+      "contentType": {
+        "sys": {
           "id": "page",
         },
       },
@@ -205,15 +205,15 @@ exports[`Rich text to JSX entryNodeToJsx should render an embedded entry block o
 exports[`Rich text to JSX entryNodeToJsx should render an embedded entry inline override 1`] = `
 <Override
   fields={
-    Object {
+    {
       "slug": "about",
       "title": "Title: About Acme Corp",
     }
   }
   sys={
-    Object {
-      "contentType": Object {
-        "sys": Object {
+    {
+      "contentType": {
+        "sys": {
           "id": "page",
         },
       },
@@ -227,15 +227,15 @@ exports[`Rich text to JSX entryNodeToJsx should render an embedded entry inline 
 exports[`Rich text to JSX entryNodeToJsx should render an entry hyperlink override 1`] = `
 <Override
   fields={
-    Object {
+    {
       "slug": "about",
       "title": "Title: About Acme Corp",
     }
   }
   sys={
-    Object {
-      "contentType": Object {
-        "sys": Object {
+    {
+      "contentType": {
+        "sys": {
           "id": "page",
         },
       },
@@ -317,7 +317,7 @@ exports[`Rich text to JSX parentNodeToJsx should render a node and its children 
 exports[`Rich text to JSX parentNodeToJsx should render a node without children 1`] = `<hr />`;
 
 exports[`Rich text to JSX richTextToJsx should parse and render rich text into JSX 1`] = `
-Array [
+[
   <p>
     This is normal text.
     <strong>
@@ -337,15 +337,15 @@ Array [
   </p>,
   <BlockElement
     fields={
-      Object {
+      {
         "slug": "about",
         "title": "Title: About Acme Corp",
       }
     }
     sys={
-      Object {
-        "contentType": Object {
-          "sys": Object {
+      {
+        "contentType": {
+          "sys": {
             "id": "page",
           },
         },
@@ -356,11 +356,11 @@ Array [
   />,
   <Image
     fields={
-      Object {
-        "file": Object {
+      {
+        "file": {
           "contentType": "image/jpg",
-          "details": Object {
-            "image": Object {
+          "details": {
+            "image": {
               "height": 500,
               "width": 800,
             },
@@ -373,7 +373,7 @@ Array [
       }
     }
     sys={
-      Object {
+      {
         "id": "4fgGUXCJXWOQUAEQqCS8MW",
         "updatedAt": "2019-01-14T04:57:27.049Z",
       }

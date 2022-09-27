@@ -4,7 +4,7 @@ exports[`Video should render a responsive video 1`] = `
 <video
   controls={true}
   style={
-    Object {
+    {
       "display": "block",
       "height": "auto",
       "maxWidth": "100%",
