@@ -39,11 +39,11 @@ All this clocks in at around 4 kB gzipped.
 
 Install `@madebyconnor/rich-text-to-jsx` with your favorite package manager.
 
-```shell
-# yarn
-yarn add @madebyconnor/rich-text-to-jsx
+```sh
 # npm
 npm i @madebyconnor/rich-text-to-jsx
+# yarn v1
+yarn add @madebyconnor/rich-text-to-jsx
 ```
 
 ## Getting started
