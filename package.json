@@ -24,7 +24,7 @@
     "test:ci": "jest --coverage --runInBand --ci",
     "size": "size-limit",
     "prerelease": "npm run build && npm run size",
-    "release": "semantic-release"
+    "release": "changeset publish"
   },
   "size-limit": [
     {
