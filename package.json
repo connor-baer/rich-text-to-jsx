@@ -1,6 +1,6 @@
 {
   "name": "@madebyconnor/rich-text-to-jsx",
-  "version": "0.0.0-semantically-released",
+  "version": "2.2.1",
   "description": "Opinionated JSX renderer for the Contentful rich text field type.",
   "sideEffects": false,
   "main": "dist/index.cjs.js",
