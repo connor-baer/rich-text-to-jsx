@@ -18,12 +18,12 @@
     "build": "rollup --config",
     "create:component": "foundry run plop component",
     "lint": "foundry run eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "yarn lint --fix",
-    "lint:ci": "yarn lint --format junit -o __reports__/eslint-results.xml",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:ci": "npm run lint -- --format junit -o __reports__/eslint-results.xml",
     "test": "jest --watch",
     "test:ci": "jest --coverage --runInBand --ci",
     "size": "size-limit",
-    "prerelease": "yarn build && yarn size",
+    "prerelease": "npm run build && npm run size",
     "release": "semantic-release"
   },
   "size-limit": [
