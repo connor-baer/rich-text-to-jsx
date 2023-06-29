@@ -70,6 +70,6 @@
     "prop-types": ">= 15"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^16.0.3"
+    "@contentful/rich-text-types": "^16.2.0"
   }
 }
