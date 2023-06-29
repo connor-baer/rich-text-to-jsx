@@ -29,7 +29,7 @@
   "size-limit": [
     {
       "path": "dist/index.cjs.js",
-      "limit": "4.1 kB"
+      "limit": "4 kB"
     }
   ],
   "jest": {
@@ -46,6 +46,7 @@
     "@babel/preset-react": "^7.22.5",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
+    "@size-limit/preset-small-lib": "^8.2.6",
     "@sumup/foundry": "^6.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^29.5.0",
@@ -63,11 +64,11 @@
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "size-limit": "^0.21.1"
+    "size-limit": "^8.2.6"
   },
   "peerDependencies": {
-    "react": ">= 16.0.0",
-    "prop-types": ">= 15"
+    "prop-types": ">= 15",
+    "react": ">= 16.0.0"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^16.2.0"
