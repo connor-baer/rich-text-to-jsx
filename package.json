@@ -37,8 +37,8 @@
       "jest-serializer-html"
     ]
   },
-  "foundry": {
-    "publish": true
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
