@@ -45,7 +45,7 @@
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.1",
+    "@changesets/cli": "^2.27.1",
     "@size-limit/preset-small-lib": "^10.0.2",
     "@sumup/foundry": "^6.1.0",
     "babel-core": "^7.0.0-bridge.0",
