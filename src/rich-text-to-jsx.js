@@ -10,6 +10,7 @@ import BlockElement from './components/BlockElement';
 import InlineElement from './components/InlineElement';
 import AssetLink from './components/AssetLink';
 import Image from './components/Image';
+import Table from './components/Table';
 import Video from './components/Video';
 import Audio from './components/Audio';
 
@@ -37,6 +38,10 @@ const tagMap = {
   [BLOCKS.LIST_ITEM]: 'li',
   [BLOCKS.QUOTE]: 'blockquote',
   [BLOCKS.HR]: 'hr',
+  [BLOCKS.TABLE]: Table,
+  [BLOCKS.TABLE_ROW]: 'tr',
+  [BLOCKS.TABLE_HEADER_CELL]: 'th',
+  [BLOCKS.TABLE_CELL]: 'td',
   [INLINES.HYPERLINK]: 'a',
   [MARKS.BOLD]: 'strong',
   [MARKS.ITALIC]: 'em',

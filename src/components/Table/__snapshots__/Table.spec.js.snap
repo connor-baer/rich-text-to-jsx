@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table should render a table 1`] = `
+<table>
+  <tbody />
+</table>
+`;
