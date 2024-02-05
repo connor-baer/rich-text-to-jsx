@@ -10,6 +10,7 @@ import {
   boldAndItalic,
   unorderedList,
   hr,
+  table,
   embeddedImage,
   embeddedVideo,
   embeddedAudio,
@@ -29,6 +30,7 @@ describe('Rich text to JSX', () => {
         paragraph,
         embeddedEntryBlock,
         embeddedImage,
+        table,
       ]);
       const actual = richTextToJsx(richText);
       expect(actual).toMatchSnapshot();

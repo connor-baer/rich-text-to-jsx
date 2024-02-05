@@ -42,8 +42,6 @@ Install `@madebyconnor/rich-text-to-jsx` with your favorite package manager.
 ```sh
 # npm
 npm i @madebyconnor/rich-text-to-jsx
-# yarn v1
-yarn add @madebyconnor/rich-text-to-jsx
 ```
 
 ## Getting started

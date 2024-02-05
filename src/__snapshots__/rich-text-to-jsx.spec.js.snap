@@ -379,6 +379,32 @@ exports[`Rich text to JSX richTextToJsx should parse and render rich text into J
       }
     }
   />,
+  <Table>
+    <tr>
+      <th>
+        <p>
+          A 1
+        </p>
+      </th>
+      <th>
+        <p>
+          B 1
+        </p>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <p>
+          A 2
+        </p>
+      </td>
+      <td>
+        <p>
+          B 2
+        </p>
+      </td>
+    </tr>
+  </Table>,
 ]
 `;
 
