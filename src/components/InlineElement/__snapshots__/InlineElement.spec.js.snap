@@ -2,33 +2,23 @@
 
 exports[`InlineElement in development should render a warning 1`] = `
 <span
-  style={
-    {
-      "backgroundColor": "red",
-      "color": "white",
-    }
-  }
+  style="color: white; background-color: red;"
 >
   Unknown inline node type
 </span>
 `;
 
 exports[`InlineElement in development should render a warning and the children 1`] = `
-[
+<div>
   <span
-    style={
-      {
-        "backgroundColor": "red",
-        "color": "white",
-      }
-    }
+    style="color: white; background-color: red;"
   >
     Unknown inline node type
-  </span>,
+  </span>
   <p>
     Foo
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`InlineElement in production should render null 1`] = `null`;

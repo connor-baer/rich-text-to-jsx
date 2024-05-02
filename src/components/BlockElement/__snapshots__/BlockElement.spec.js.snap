@@ -2,33 +2,23 @@
 
 exports[`BlockElement in development should render a warning 1`] = `
 <span
-  style={
-    {
-      "backgroundColor": "red",
-      "color": "white",
-    }
-  }
+  style="color: white; background-color: red;"
 >
   Unknown block node type.
 </span>
 `;
 
 exports[`BlockElement in development should render a warning and the children 1`] = `
-[
+<div>
   <span
-    style={
-      {
-        "backgroundColor": "red",
-        "color": "white",
-      }
-    }
+    style="color: white; background-color: red;"
   >
     Unknown block node type.
-  </span>,
+  </span>
   <p>
     Foo
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`BlockElement in production should render null 1`] = `null`;

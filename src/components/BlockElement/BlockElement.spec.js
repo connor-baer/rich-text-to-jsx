@@ -1,5 +1,6 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
+
+import { create } from '../../../test-utils';
 
 import BlockElement from './BlockElement';
 

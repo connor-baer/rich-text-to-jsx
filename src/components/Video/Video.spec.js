@@ -1,6 +1,6 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
 
+import { create } from '../../../test-utils';
 import { video } from '../../__fixtures__';
 
 import Video from './Video';

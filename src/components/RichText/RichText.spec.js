@@ -1,7 +1,7 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
 import PropTypes from 'prop-types';
 
+import { create } from '../../../test-utils';
 import {
   createDocument,
   headingOne,

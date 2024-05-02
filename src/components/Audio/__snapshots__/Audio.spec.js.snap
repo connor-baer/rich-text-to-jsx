@@ -2,14 +2,8 @@
 
 exports[`Audio should render an HTML5 audio player 1`] = `
 <audio
-  controls={true}
-  style={
-    {
-      "display": "block",
-      "height": "auto",
-      "maxWidth": "100%",
-    }
-  }
+  controls=""
+  style="display: block; max-width: 100%; height: auto;"
 >
   <source
     src="https://spotify.com/example.mp3"
@@ -19,7 +13,7 @@ exports[`Audio should render an HTML5 audio player 1`] = `
     Your browser does not support HTML5 audio. Here is a
      
     <a
-      download={true}
+      download=""
       href="https://spotify.com/example.mp3"
     >
       link to the audio file
