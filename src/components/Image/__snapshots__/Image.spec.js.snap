@@ -4,11 +4,6 @@ exports[`Image should render a responsive image 1`] = `
 <img
   alt="Random photo from Unsplash.com"
   src="https://source.unsplash.com/random/800x500"
-  style={
-    {
-      "height": "auto",
-      "maxWidth": "100%",
-    }
-  }
+  style="max-width: 100%; height: auto;"
 />
 `;

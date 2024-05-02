@@ -2,33 +2,23 @@
 
 exports[`UnknownElement in development should render a warning 1`] = `
 <span
-  style={
-    {
-      "backgroundColor": "red",
-      "color": "white",
-    }
-  }
+  style="color: white; background-color: red;"
 >
   Node type is undefined
 </span>
 `;
 
 exports[`UnknownElement in development should render a warning and the children 1`] = `
-[
+<div>
   <span
-    style={
-      {
-        "backgroundColor": "red",
-        "color": "white",
-      }
-    }
+    style="color: white; background-color: red;"
   >
     Node type is undefined
-  </span>,
+  </span>
   <p>
     Foo
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`UnknownElement in production should render null 1`] = `null`;

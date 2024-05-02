@@ -2,14 +2,8 @@
 
 exports[`Video should render a responsive video 1`] = `
 <video
-  controls={true}
-  style={
-    {
-      "display": "block",
-      "height": "auto",
-      "maxWidth": "100%",
-    }
-  }
+  controls=""
+  style="display: block; max-width: 100%; height: auto;"
 >
   <source
     src="https://youtube.com/example.mp4"
@@ -19,7 +13,7 @@ exports[`Video should render a responsive video 1`] = `
     Your browser does not support HTML5 video. Here is a
      
     <a
-      download={true}
+      download=""
       href="https://youtube.com/example.mp4"
     >
       link to the video
