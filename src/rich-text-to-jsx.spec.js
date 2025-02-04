@@ -1,6 +1,8 @@
 import React from 'react';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
+import { create } from '../test-utils';
+
 import richTextToJsx, * as RichTextService from './rich-text-to-jsx';
 import {
   createDocument,
@@ -33,55 +35,55 @@ describe('Rich text to JSX', () => {
         table,
       ]);
       const actual = richTextToJsx(richText);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should return null if no rich text is passed', () => {
       const actual = richTextToJsx();
-      expect(actual).toBeNull();
+      expect(create(actual)).toBeNull();
     });
   });
 
   describe('nodeListToJsx', () => {
     it('should render the nodes', () => {
       const actual = RichTextService.nodeListToJsx([text], options);
-      expect(actual).not.toBeNull();
+      expect(create(actual)).not.toBeNull();
     });
 
     it('should return null if there are no nodes', () => {
       const actual = RichTextService.nodeListToJsx([], options);
-      expect(actual).toBeNull();
+      expect(create(actual)).toBeNull();
     });
   });
 
   describe('nodeToJsx', () => {
     it('should render an unknown element if the node type is undefined', () => {
       const actual = RichTextService.nodeToJsx({ data: {} }, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
   describe('unknownNodeToJsx', () => {
     it('should render an unknown element', () => {
       const actual = RichTextService.unknownNodeToJsx(paragraph, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
   describe('textNodeToJsx', () => {
     it('should render a text node', () => {
       const actual = RichTextService.textNodeToJsx(text, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render a text node with a mark', () => {
       const actual = RichTextService.textNodeToJsx(bold, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render a text node with multiple marks', () => {
       const actual = RichTextService.textNodeToJsx(boldAndItalic, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
@@ -94,7 +96,7 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides,
       });
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an embedded entry inline override', () => {
@@ -105,7 +107,7 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides,
       });
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an entry hyperlink override', () => {
@@ -116,29 +118,29 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides,
       });
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an unknown element if the content type is undefined', () => {
       const actual = RichTextService.entryNodeToJsx({ data: {} }, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
   describe('assetNodeToJsx', () => {
     it('should render an embedded image', () => {
       const actual = RichTextService.assetNodeToJsx(embeddedImage, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an embedded video', () => {
       const actual = RichTextService.assetNodeToJsx(embeddedVideo, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an embedded audio', () => {
       const actual = RichTextService.assetNodeToJsx(embeddedAudio, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an embedded asset override', () => {
@@ -149,12 +151,12 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides,
       });
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an asset hyperlink', () => {
       const actual = RichTextService.assetNodeToJsx(assetHyperlink, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an asset hyperlink override', () => {
@@ -165,12 +167,12 @@ describe('Rich text to JSX', () => {
         ...options,
         overrides,
       });
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an unknown element if the mime type is undefined', () => {
       const actual = RichTextService.assetNodeToJsx({ data: {} }, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render an unknown element if there is no component for the mime type', () => {
@@ -187,19 +189,19 @@ describe('Rich text to JSX', () => {
         },
         options,
       );
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
   describe('parentNodeToJsx', () => {
     it('should render a node and its children', () => {
       const actual = RichTextService.parentNodeToJsx(unorderedList, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
 
     it('should render a node without children', () => {
       const actual = RichTextService.parentNodeToJsx(hr, options);
-      expect(actual).toMatchSnapshot();
+      expect(create(actual)).toMatchSnapshot();
     });
   });
 
