@@ -1,4 +1,4 @@
-module.exports = require('@sumup/foundry/eslint')({
+module.exports = require('@sumup-oss/foundry/eslint')({
   overrides: [
     {
       files: ['src/components/**'],
