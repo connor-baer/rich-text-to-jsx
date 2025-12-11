@@ -31,7 +31,7 @@ Opinionated JSX renderer for the [Contentful Rich Text](https://www.contentful.c
 Any HTML tags (corresponding to node types) rendered by the compiler can be [overridden](#optionsoverrides---override-any-nodes-representation) to include additional props or even a different React component entirely.
 Embedded [entries](#entries) and [assets](#assets) can be rendered using different components depending on whether they are inline, blocks or hyperlinks.
 The [rendering function](#optionscreateelement---custom-reactcreateelement-behavior) can be customized.
-All this clocks in at around 5 kB gzipped.
+All this clocks in at around 5.4 kB gzipped.
 
 ⚠️ Requires React >= 16.0.0. Some features depend on a specific content structure: entry and asset links need to be resolved and the content localized. If this is a deal breaker for you, have a look at the official [`rich-text-react-renderer`](https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer) package.
 

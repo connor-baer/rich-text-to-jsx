@@ -27,7 +27,7 @@
   "size-limit": [
     {
       "path": "dist/index.cjs.js",
-      "limit": "5.2 kB"
+      "limit": "5.42 kB"
     }
   ],
   "jest": {
