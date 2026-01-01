@@ -54,7 +54,7 @@
     "jest-junit": "^16.0.0",
     "prop-types": "^15.6.2",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "react-dom": "^19.2.3",
     "regenerator-runtime": "^0.14.1",
     "rollup": "^2.79.2",
     "rollup-plugin-babel": "^4.4.0",
