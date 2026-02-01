@@ -43,7 +43,7 @@
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.8",
     "@size-limit/preset-small-lib": "^12.0.0",
-    "@sumup-oss/foundry": "^8.0.0",
+    "@sumup-oss/foundry": "^9.0.6",
     "@testing-library/react": "^16.3.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^30.1.2",
