@@ -10,3 +10,10 @@ updates:
     schedule:
       interval: 'monthly'
     versioning-strategy: increase
+    cooldown:
+      default-days: 7
+    groups:
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
